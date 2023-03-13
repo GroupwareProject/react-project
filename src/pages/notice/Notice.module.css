@@ -1,0 +1,30 @@
+.noticeDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+}
+
+.noticeTable th, td {
+    padding: 10px;
+    height: 10px;
+    text-align: center;
+    word-break: break-all;
+    table-layout: fixed;
+}
+
+.noticeTable tr:hover { 
+    background-color: #E0E3DA; 
+}
+
+.noticeTable tr {
+    cursor: pointer;
+}
+
+.noticeWriteBtn{
+    margin: 0 auto;
+    display: block;
+}

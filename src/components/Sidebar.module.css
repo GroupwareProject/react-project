@@ -1,0 +1,49 @@
+.LogoBtn {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 1.2em;
+}
+
+.SidebarDiv {
+    max-width: 15%;
+    min-width: 10px;    
+    border-right: 1px solid black;
+    /* 사이드바 레이아웃 확인용 */
+    /* background-color: #A593E0; */
+}
+
+.SidebarUl {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-wrap: wrap;    
+    list-style: none;
+    padding-left: 0px;    
+    margin-top: 20px;
+    margin-bottom: 10px;
+    line-height: 3;
+}
+
+.SidebarUl li{
+    width: 80%;
+    padding-left: 20px;
+    height: auto;
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+a {
+    text-decoration: none;    
+    color: #566270;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    color: #A593E0;
+    font-weight: bold;
+}
+
+

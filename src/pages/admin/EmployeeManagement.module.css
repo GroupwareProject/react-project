@@ -1,0 +1,39 @@
+.employeeDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+}
+
+.employeeUl{
+    width: 20px;
+    height: 10px;
+    min-width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.employeeTable th, td {
+    padding: 10px;
+    height: 10px;
+    text-align: center;
+    word-break: break-all;
+    table-layout: fixed;
+}
+
+.employeeTable tr:hover { 
+    background-color: #E0E3DA; 
+}
+
+.employeeTable tr {
+    cursor: pointer;
+}
+
+.employeeBtn{
+    margin: 0 auto;
+    display: block;
+}
