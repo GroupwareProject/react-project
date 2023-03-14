@@ -42,7 +42,7 @@ a {
 
 a:focus, a:hover {
     text-decoration: none;
-    color: #A593E0;
+    color: rgba(137, 43, 226, 0.523);
     font-weight: bold;
 }
 

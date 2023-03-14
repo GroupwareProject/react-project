@@ -1,8 +1,9 @@
-import NoticeWriteCSS from "./NoticeWrite.module.css";
+// import NoticeDetailCSS from "./NoticeDetail.module.css";
+import NoticeWriteCSS from "./NoticeDetail.module.css";
 import { useNavigate } from 'react-router-dom';
 import React,{ useState } from "react";
 
-function NoticeWrite() {
+function NoticeDetail() {
 
     const navigate = useNavigate();
 
@@ -70,12 +71,18 @@ function NoticeWrite() {
                         >
                             돌아가기
                         </button>
+                        <button
+                            className={ NoticeWriteCSS.backBtn }
+                            onClick={ () => navigate("/notice") }
+                        >
+                            수정하기
+                        </button>
                         
                         <button       
                             className={ NoticeWriteCSS.saveBtn }
                             type="submit"       
                         >
-                            저장하기
+                            삭제하기
                         </button>
                 </div>
             </div>
@@ -83,4 +90,4 @@ function NoticeWrite() {
     );
 }
 
-export default NoticeWrite;
+export default NoticeDetail;

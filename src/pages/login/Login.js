@@ -7,8 +7,8 @@ function Login(){
     const dispatch = useDispatch();
 
     const [form, setForm] = useState({
-        memberId: '',
-        memberPassword: ''
+        memberCode: '',
+        memberPwd: ''
     });
     
     const onChangeHandler = (e) => {
@@ -29,7 +29,7 @@ function Login(){
             <h1>로그인</h1>
             <input
                 type="text"
-                name="employeeCode"
+                name="memberCode"
                 placeholder="사번 입력"
                 autoComplete="off"
                 onChange={ onChangeHandler }
@@ -37,7 +37,7 @@ function Login(){
             />
             <input
                 type="password"
-                name="employeePwd"
+                name="memberPwd"
                 placeholder="비밀번호 입력"
                 autoComplete="off"
                 onChange={ onChangeHandler }

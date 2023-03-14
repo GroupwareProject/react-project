@@ -1,19 +1,24 @@
-.employeeDiv {
+.memberDiv {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 850px;
     margin: 10px;
 }
 
-.employeeTable{
+.memberTable {
     width: 80%;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
-.employeeTable th, td {
+.memberInfo {
+    
+}
+
+.memberTable th, td {
     padding: 10px;
     height: 10px;
     text-align: center;
@@ -21,8 +26,14 @@
     table-layout:fixed;
 }
 
-.noticeDetailInput{
-    width: 87%;
+.memberInput{
+    width: 90%;
+}
+
+.buttonDiv{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .backBtn .saveBtn {

@@ -1,7 +1,7 @@
 .HeaderDiv {
     width: 100%;
     top: 0;  
-    height: 50px;
+    height: 70px;
     line-height: 50px;
     min-width: 800px;
     display: flex;
@@ -33,6 +33,6 @@
 }
 .HeaderBtn:hover {
     text-decoration: none;
-    color: #A593E0;
+    color: #FFFFF3;
     font-weight: bold;
 }

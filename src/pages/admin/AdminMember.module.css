@@ -1,4 +1,4 @@
-.employeeDiv {
+.memberDiv {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -7,33 +7,36 @@
     height: 100%;
     margin: 10px;
 }
-
-.employeeUl{
+/* 
+.memberUl{
     width: 20px;
     height: 10px;
     min-width: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
-.employeeTable th, td {
+.memberTable th, td {
     padding: 10px;
     height: 10px;
     text-align: center;
     word-break: break-all;
     table-layout: fixed;
+    font-size: small;
 }
 
-.employeeTable tr:hover { 
-    background-color: #E0E3DA; 
+.memberTable tr:hover { 
+    background-color: #FFFFF3; 
 }
 
-.employeeTable tr {
+.memberTable tr {
     cursor: pointer;
 }
 
-.employeeBtn{
-    margin: 0 auto;
-    display: block;
+.memberAddBtn{
+    margin-left: 32%;
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
 }

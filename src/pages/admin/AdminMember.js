@@ -1,25 +1,28 @@
 import { useNavigate } from "react-router-dom";
-import EmployeeManagementCSS from "./EmployeeManagement.module.css";
+import AdminMemberCSS from "./AdminMember.module.css";
 
-function EmployeeManagement(){
+function AddminMember(){
 
     const navigate = useNavigate();
 
-    const onClickHandler = () => {
-       navigate("/employeeRegistration");
+    const onClickAddHandler = () => {
+       navigate("/adminAddMember");
     }
 
     return(
         <>
-            <div className={ EmployeeManagementCSS.employeeDiv }>
-                <ul className={ EmployeeManagementCSS.employeeUl }>
+            <div className={ AdminMemberCSS.memberDiv }>
+                {/* <ul className={ EmployeeManagementCSS.employeeUl }>
                     <h1>사원관리</h1>
                     <h1>근태관리</h1>
-                </ul>
-                <button className={ EmployeeManagementCSS.employeeBtn } onClick={ onClickHandler }>
-                    신규사원 등록
-                </button>
-                <table className={ EmployeeManagementCSS.employeeTable }>
+                </ul> */}
+                <h2>사원관리</h2>
+                <div className={ AdminMemberCSS.memberAddBtn }>
+                    <button onClick={ onClickAddHandler }>
+                        신규사원 등록
+                    </button>
+                </div>
+                <table className={ AdminMemberCSS.memberTable }>
                     <colgroup>
                         <col width="15%" />
                         <col width="15%" />
@@ -27,7 +30,7 @@ function EmployeeManagement(){
                         <col width="25%" />
                         <col width="25%" />
                     </colgroup>
-                    <thead>
+                    <thead style={{"text-align": "center", "backgroundColor": "#E0E3DA"}}>
                         <tr>
                             <th>부서</th>
                             <th>직급</th>
@@ -51,4 +54,4 @@ function EmployeeManagement(){
     );
 }
 
-export default EmployeeManagement;
+export default AddminMember;

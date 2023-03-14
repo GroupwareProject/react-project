@@ -2,6 +2,7 @@ import Sidebar from '../components/Sidebar';
 import Header from "../components/Header";
 import { Outlet } from 'react-router-dom';
 import LayoutCSS from "./Layout.module.css";
+import Footer from '../components/Footer';
 
 function Layout(){
   return (
@@ -13,6 +14,7 @@ function Layout(){
             <Outlet />
         </main>
         </div>
+        <Footer />
     </>
   );
 }

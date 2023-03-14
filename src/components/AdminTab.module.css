@@ -1,0 +1,26 @@
+.TabMenu {
+    /* color: #A593E0; */
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 2rem;
+    cursor : pointer;
+}
+
+a {
+    text-decoration: none;    
+    color: #566270;
+}
+
+a:focus, a:hover {
+    text-decoration: none;
+    color: #A593E0;
+    font-weight: bold;
+}
+
+
+
+
+

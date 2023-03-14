@@ -1,4 +1,4 @@
-.noticeWriteDiv {
+.memberDiv {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -8,13 +8,17 @@
     margin: 10px;
 }
 
-.noticeWriteTable{
+.memberTable {
     width: 80%;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
-.noticeWriteTable td {
+.memberInfo {
+    
+}
+
+.memberTable th, td {
     padding: 10px;
     height: 10px;
     text-align: center;
@@ -22,13 +26,7 @@
     table-layout:fixed;
 }
 
-.contentTextArea{
-    width: 90%;
-    height: 250px;
-    resize: none;
-}
-
-.noticeWriteInput{
+.memberInput{
     width: 90%;
 }
 
