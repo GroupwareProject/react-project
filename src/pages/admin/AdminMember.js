@@ -24,14 +24,16 @@ function AddminMember(){
                 </div>
                 <table className={ AdminMemberCSS.memberTable }>
                     <colgroup>
-                        <col width="15%" />
-                        <col width="15%" />
+                        <col width="10%" />
+                        <col width="10%" />
+                        <col width="10%" />
                         <col width="20%" />
                         <col width="25%" />
                         <col width="25%" />
                     </colgroup>
                     <thead style={{"text-align": "center", "backgroundColor": "#E0E3DA"}}>
                         <tr>
+                            <th>사번</th>
                             <th>부서</th>
                             <th>직급</th>
                             <th>이름</th>
@@ -41,8 +43,9 @@ function AddminMember(){
                     </thead> 
                     <tbody>
                         <tr>
-                            <td>운영팀</td>
-                            <td>팀장</td>
+                            <td>2000</td>
+                            <td>인사팀</td>
+                            <td>사장</td>
                             <td>홍길동</td>
                             <td>0000</td>
                             <td>010-0000-0000</td>

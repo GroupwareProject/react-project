@@ -8,14 +8,16 @@ function Address() {
                 <h2>주소록</h2>
                 <table className={ AddressCSS.addressTable }>
                     <colgroup>
-                        <col width="15%" />
-                        <col width="15%" />
+                        <col width="10%" />
+                        <col width="10%" />
+                        <col width="10%" />
                         <col width="20%" />
                         <col width="25%" />
                         <col width="25%" />
                     </colgroup>
                     <thead style={{"text-align": "center", "backgroundColor": "#E0E3DA"}}>
                         <tr>
+                            <th>사번</th>
                             <th>부서</th>
                             <th>직급</th>
                             <th>이름</th>
@@ -25,6 +27,7 @@ function Address() {
                     </thead> 
                     <tbody>
                         <tr>
+                            <td>2000</td>
                             <td>운영팀</td>
                             <td>팀장</td>
                             <td>홍길동</td>
