@@ -1,15 +1,36 @@
 import LoginCSS from './Login.module.css';
-import { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { callLoginAPI } from '../../apis/MemberAPICalls';
 
 function Login(){
 
+    const navigate = useNavigate();
+
     const dispatch = useDispatch();
+    const loginMember = useSelector(state => state.memberReducer);  
 
     const [form, setForm] = useState({
         memberCode: '',
         memberPwd: ''
     });
+
+    useEffect(() => {
+        
+        if(loginMember.status === 200){
+            console.log("[Login] Login SUCCESS {}", loginMember);
+            navigate("/", { replace: true });
+        }
+
+        /* 회원 가입 후 로그인 페이지로 안내 되었을 때 */
+        // if(loginMember.status === 201){
+
+        //     loginMember.status = 100  // Continue
+        //     dispatch({ type: POST_REGISTER,  payload: loginMember });
+        // }  
+    }
+    ,[loginMember]);
     
     const onChangeHandler = (e) => {
         setForm({
@@ -19,9 +40,11 @@ function Login(){
     };
     
     const onClickLoginHandler = () => {
-
-        alert('로그인이 완료되었습니다.');
-        window.location.reload();
+        dispatch(callLoginAPI({
+            form: form
+        }));
+        // alert('로그인이 완료되었습니다.');
+        // window.location.reload();
     }
 
     return(
