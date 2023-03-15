@@ -43,7 +43,7 @@ function Login(){
         dispatch(callLoginAPI({
             form: form
         }));
-        // alert('로그인이 완료되었습니다.');
+        alert('로그인이 완료되었습니다.');
         // window.location.reload();
     }
 

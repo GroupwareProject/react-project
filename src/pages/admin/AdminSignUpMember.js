@@ -1,8 +1,8 @@
-import AdminAddMemberCSS from "./AdminAddMember.module.css";
+import AdminSignUpMemberCSS from "./AdminSignUpMember.module.css";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
-function AdminAddMember(){
+function AdminSignUpMember(){
 
     const navigate = useNavigate();
 
@@ -21,16 +21,16 @@ function AdminAddMember(){
     return(
         <form>
         {/* <form action="" method="post"> */}
-            <div className={ AdminAddMemberCSS.memberDiv }>
+            <div className={ AdminSignUpMemberCSS.memberDiv }>
                 <h2>신규사원 등록</h2>
                 {/* 개인정보 */}
-                <table className={ AdminAddMemberCSS.memberTable }>
+                <table className={ AdminSignUpMemberCSS.memberTable }>
                     <tbody>
                         <tr>
                             <th>이름</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="memberName"
                                     onChange={ onChangeHandler }
@@ -41,7 +41,7 @@ function AdminAddMember(){
                             <th>생년월일</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="date"
                                     name="memberBirth"
                                     onChange={ onChangeHandler }
@@ -52,7 +52,7 @@ function AdminAddMember(){
                             <th>휴대전화</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="memberPhone"
                                     onChange={ onChangeHandler }
@@ -63,7 +63,7 @@ function AdminAddMember(){
                             <th>이메일</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="memberEmail"
                                     onChange={ onChangeHandler }
@@ -74,7 +74,7 @@ function AdminAddMember(){
                             <th>주소</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="memberAddress"
                                     onChange={ onChangeHandler }
@@ -86,7 +86,7 @@ function AdminAddMember(){
                             <th>사번</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="memberCode"
                                     onChange={ onChangeHandler }
@@ -97,7 +97,7 @@ function AdminAddMember(){
                             <th>부서</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="deptCode"
                                     onChange={ onChangeHandler }
@@ -108,7 +108,7 @@ function AdminAddMember(){
                             <th>직급</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="jobCode"
                                     onChange={ onChangeHandler }
@@ -119,7 +119,7 @@ function AdminAddMember(){
                             <th>내선번호</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="text"
                                     name="memberExtension"
                                     onChange={ onChangeHandler }
@@ -130,7 +130,7 @@ function AdminAddMember(){
                             <th>입사일</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="date"
                                     name="memberStartDate"
                                     onChange={ onChangeHandler }
@@ -141,7 +141,7 @@ function AdminAddMember(){
                             <th>퇴사일</th>
                             <td>
                                 <input
-                                    className={ AdminAddMemberCSS.memberInput }
+                                    className={ AdminSignUpMemberCSS.memberInput }
                                     type="date"
                                     name="memberEndDate"
                                     onChange={ onChangeHandler }
@@ -151,16 +151,16 @@ function AdminAddMember(){
                     </tbody>
                 </table>
             </div>
-            <div className={ AdminAddMemberCSS.buttonDiv }>
+            <div className={ AdminSignUpMemberCSS.buttonDiv }>
                     <button
-                        className={ AdminAddMemberCSS.backBtn }
+                        className={ AdminSignUpMemberCSS.backBtn }
                         onClick={ () => navigate("/admin") }
                     >
                         돌아가기
                     </button>
                     
                     <button       
-                        className={ AdminAddMemberCSS.saveBtn }
+                        className={ AdminSignUpMemberCSS.saveBtn }
                         type="submit"              
                     >
                         저장하기
@@ -170,4 +170,4 @@ function AdminAddMember(){
     );
 }
 
-export default AdminAddMember;
+export default AdminSignUpMember;

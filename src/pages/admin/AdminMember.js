@@ -6,7 +6,7 @@ function AddminMember(){
     const navigate = useNavigate();
 
     const onClickAddHandler = () => {
-       navigate("/adminAddMember");
+       navigate("/adminSignUpMember");
     }
 
     return(

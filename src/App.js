@@ -6,7 +6,7 @@ import NoticeWrite from "./pages/notice/NoticeWrite";
 import NoticeDetail from "./pages/notice/NoticeDetail";
 import Calendar from "./pages/calendar/Calendar";
 import AddminMember from "./pages/admin/AdminMember";
-import AdminAddMember from "./pages/admin/AdminAddMember";
+import AdminSignUpMember from "./pages/admin/AdminSignUpMember";
 import Address from "./pages/address/Address";
 import Mypage from "./pages/mypage/Mypage";
 // import AdminTab from "./components/AdminTab";
@@ -27,7 +27,7 @@ function App() {
             <Route path="/calendar" element={ <Calendar /> }/>
             {/* Admin관리자 */}
             <Route path="/admin" element={ <AddminMember /> }/>
-            <Route path="/adminAddMember" element={ <AdminAddMember /> }/>
+            <Route path="/adminSignUpMember" element={ <AdminSignUpMember /> }/>
             {/* 주소록 */}
             <Route path="/address" element={ <Address /> }/>
             {/* 마이페이지 */}
