@@ -26,7 +26,6 @@ function AdminAddMember(){
                 {/* 개인정보 */}
                 <table className={ AdminAddMemberCSS.memberTable }>
                     <tbody>
-                        <div className={ AdminAddMemberCSS.memberInfo }>
                         <tr>
                             <th>이름</th>
                             <td>
@@ -34,31 +33,10 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="memberName"
-                                    placeholder="이름"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
                         </tr>
-                        {/* <tr>
-                            <th>성별</th>
-                            <td>
-                                <input
-                                    className={ AdminAddMemberCSS.memberInput }
-                                    type="radio"
-                                    name="memberGender"
-                                    value="female"
-                                    onChange={ onChangeHandler }
-                                    checked
-                                /> 남성
-                                <input
-                                    className={ AdminAddMemberCSS.memberInput }
-                                    type="radio"
-                                    name="memberGender"
-                                    value="female"
-                                    onChange={ onChangeHandler }
-                                /> 여성
-                            </td>
-                        </tr> */}
                         <tr>
                             <th>생년월일</th>
                             <td>
@@ -66,19 +44,17 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="date"
                                     name="memberBirth"
-                                    placeholder="생년월일"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
                         </tr>
                         <tr>
-                            <th>휴대폰번호</th>
+                            <th>휴대전화</th>
                             <td>
                                 <input
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="memberPhone"
-                                    placeholder="휴대폰번호"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
@@ -90,7 +66,6 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="memberEmail"
-                                    placeholder="이메일"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
@@ -102,14 +77,11 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="memberAddress"
-                                    placeholder="주소"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
                         </tr>
-                        </div>
                         {/* 회사정보 */}
-                        <div className={ AdminAddMemberCSS.companyInfo }>
                         <tr>
                             <th>사번</th>
                             <td>
@@ -117,7 +89,6 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="memberCode"
-                                    placeholder="사번"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
@@ -129,7 +100,6 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="deptCode"
-                                    placeholder="부서"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
@@ -141,7 +111,6 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="jobCode"
-                                    placeholder="직급"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
@@ -153,7 +122,6 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="text"
                                     name="memberExtension"
-                                    placeholder="내선번호"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
@@ -165,7 +133,6 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="date"
                                     name="memberStartDate"
-                                    placeholder="입사일"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
@@ -177,12 +144,10 @@ function AdminAddMember(){
                                     className={ AdminAddMemberCSS.memberInput }
                                     type="date"
                                     name="memberEndDate"
-                                    placeholder="퇴사일"
                                     onChange={ onChangeHandler }
                                 />
                             </td>
                         </tr>
-                        </div>
                     </tbody>
                 </table>
             </div>

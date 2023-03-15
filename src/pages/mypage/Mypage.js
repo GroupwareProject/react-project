@@ -4,11 +4,9 @@ function Mypage(){
     return(
         <>
             <div className={ MypageCSS.memberDiv }>
-                <h2>마이페이지</h2>
-                {/* 개인정보 */}
+                <h2>나의 정보</h2>
                 <table className={ MypageCSS.memberTable }>
                     <tbody>
-                        <div className={ MypageCSS.memberInfo }>
                         <tr>
                             <th>이름</th>
                             <td>
@@ -16,6 +14,7 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="memberName"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
@@ -26,16 +25,18 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="date"
                                     name="memberBirth"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
                         <tr>
-                            <th>휴대폰번호</th>
+                            <th>휴대전화</th>
                             <td>
                                 <input
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="memberPhone"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
@@ -46,6 +47,7 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="memberEmail"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
@@ -56,12 +58,10 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="memberAddress"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
-                        </div>
-                        {/* 회사정보 */}
-                        <div className={ MypageCSS.companyInfo }>
                         <tr>
                             <th>사번</th>
                             <td>
@@ -69,6 +69,7 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="memberCode"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
@@ -79,6 +80,7 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="deptCode"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
@@ -89,6 +91,7 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="jobCode"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
@@ -99,6 +102,7 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="text"
                                     name="memberExtension"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
@@ -109,21 +113,21 @@ function Mypage(){
                                     className={ MypageCSS.memberInput }
                                     type="date"
                                     name="memberStartDate"
+                                    readOnly={true}
                                 />
                             </td>
                         </tr>
-                        </div>
                     </tbody>
                 </table>
             </div>
-            <div className={ MypageCSS.buttonDiv }>
-                    <button       
-                        className={ MypageCSS.saveBtn }
-                        // type="submit"              
+            {/* <div className={ MypageCSS.buttonDiv }>
+            <button
+                        className={ MypageCSS.backBtn }
+                        onClick={ () => navigate("/admin") }
                     >
-                        수정하기
+                        돌아가기
                     </button>
-            </div>
+            </div> */}
         </>
     );
 }

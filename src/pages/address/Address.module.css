@@ -17,9 +17,9 @@
     font-size: small;
 }
 
-.addressTable tr:hover { 
+/* .addressTable tr:hover { 
     background-color: #FFFFF3; 
-}
+} */
 
 .addressTable tr {
     cursor: pointer;
