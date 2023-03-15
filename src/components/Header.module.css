@@ -33,6 +33,6 @@
 }
 .HeaderBtn:hover {
     text-decoration: none;
-    color: #FFFFF3;
+    color: rgba(137, 43, 226, 0.523);
     font-weight: bold;
 }

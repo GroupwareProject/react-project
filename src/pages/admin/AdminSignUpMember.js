@@ -1,14 +1,30 @@
 import AdminSignUpMemberCSS from "./AdminSignUpMember.module.css";
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import { callRegisterAPI } from "../../apis/MemberAPICalls";
 function AdminSignUpMember(){
 
     const navigate = useNavigate();
 
-    const [form, setForm] = useState({
-        memberName: '',
+    const dispatch = useDispatch();
+    const member = useSelector(state => state.memberReducer); 
 
+    const [form, setForm] = useState({
+        memberCode: '',
+        deptCode: '',
+        jobCode: '',
+        memberPwd: '',
+        memberName: '',
+        memberBirth: '',
+        memberPhone: '',
+        memberEmail: '',
+        memberAddress: '',
+        memberExtension: '',
+        memberStartDate: '',
+        memberEndDate: '',
+        memberIsOut: '',
     })
 
     const onChangeHandler = (e) => {
@@ -18,14 +34,68 @@ function AdminSignUpMember(){
         });
     };
 
+    const onClickRegisterHandler = () => {
+        dispatch(callRegisterAPI({
+            form: form
+        }));
+
+        alert('회원 등록을 완료하였습니다.');
+        navigate("/admin", { replace: true })
+    }
+
     return(
-        <form>
+        <>
         {/* <form action="" method="post"> */}
             <div className={ AdminSignUpMemberCSS.memberDiv }>
                 <h2>신규사원 등록</h2>
-                {/* 개인정보 */}
                 <table className={ AdminSignUpMemberCSS.memberTable }>
                     <tbody>
+                    <tr>
+                            <th>사번</th>
+                            <td>
+                                <input
+                                    className={ AdminSignUpMemberCSS.memberInput }
+                                    type="text"
+                                    name="memberCode"
+                                    placeholder="사번은 자동생성됩니다."
+                                    onChange={ onChangeHandler }
+                                    readOnly={true}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>부서</th>
+                            <td>
+                                <input
+                                    className={ AdminSignUpMemberCSS.memberInput }
+                                    type="text"
+                                    name="deptCode"
+                                    onChange={ onChangeHandler }
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>직급</th>
+                            <td>
+                                <input
+                                    className={ AdminSignUpMemberCSS.memberInput }
+                                    type="text"
+                                    name="jobCode"
+                                    onChange={ onChangeHandler }
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>비밀번호</th>
+                            <td>
+                                <input
+                                    className={ AdminSignUpMemberCSS.memberInput }
+                                    type="password"
+                                    name="memberPwd"
+                                    onChange={ onChangeHandler }
+                                />
+                            </td>
+                        </tr>
                         <tr>
                             <th>이름</th>
                             <td>
@@ -81,40 +151,7 @@ function AdminSignUpMember(){
                                 />
                             </td>
                         </tr>
-                        {/* 회사정보 */}
-                        <tr>
-                            <th>사번</th>
-                            <td>
-                                <input
-                                    className={ AdminSignUpMemberCSS.memberInput }
-                                    type="text"
-                                    name="memberCode"
-                                    onChange={ onChangeHandler }
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>부서</th>
-                            <td>
-                                <input
-                                    className={ AdminSignUpMemberCSS.memberInput }
-                                    type="text"
-                                    name="deptCode"
-                                    onChange={ onChangeHandler }
-                                />
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>직급</th>
-                            <td>
-                                <input
-                                    className={ AdminSignUpMemberCSS.memberInput }
-                                    type="text"
-                                    name="jobCode"
-                                    onChange={ onChangeHandler }
-                                />
-                            </td>
-                        </tr>
+                        
                         <tr>
                             <th>내선번호</th>
                             <td>
@@ -161,12 +198,13 @@ function AdminSignUpMember(){
                     
                     <button       
                         className={ AdminSignUpMemberCSS.saveBtn }
-                        type="submit"              
+                        // type="submit"    
+                        onClick = { onClickRegisterHandler }          
                     >
                         저장하기
                     </button>
             </div>
-        </form>
+        </>
     );
 }
 
