@@ -29,7 +29,7 @@ function Header(){
 
         return (
             <div>
-                <Link to="/login"><FcBusinessman color="black" />로그인</Link>
+                <Link to="/login"><FcBusinessman />로그인</Link>
             </div>
         );
     }

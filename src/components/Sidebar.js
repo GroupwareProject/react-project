@@ -21,7 +21,7 @@ function Sidebar() {
             <ul className={ SidebarCSS.SidebarUl }>
                 <li><Link to="/notice"><FcFilledFilter /> 공지사항</Link></li>
                 <li><Link to="/calendar"><FcPlanner /> 캘린더</Link></li>
-                <li><Link to="/messenger"><FcSms /> 메신저</Link></li>
+                {/* <li><Link to="/messenger"><FcSms /> 메신저</Link></li> */}
                 <li><Link to="/address"><FcTwoSmartphones /> 주소록</Link></li>
                 <li><Link to="/myPage"><FcPortraitMode /> 마이페이지</Link></li>
                 <li><Link to="/admin"><FcServices /> 관리자</Link></li>

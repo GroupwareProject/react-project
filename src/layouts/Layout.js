@@ -8,7 +8,7 @@ function Layout(){
   return (
     <>
         <Header />
-        <div style= { { display: 'flex'} }>
+        <div style= { { display: 'flex' } }>
         <Sidebar />
         <main className={ LayoutCSS.contents }>
             <Outlet />
