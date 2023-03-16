@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcBusinessman } from "react-icons/fc";
 import HeaderCSS from "./Header.module.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { callLogoutAPI } from "../apis/MemberAPICalls";
 
@@ -10,7 +10,8 @@ function Header(){
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const isLogin = window.localStorage.getItem('accessToken');
+    
+    const isLogin = window.localStorage.getItem('accessToken'); 
 
     const onClickLogoHandler = () => {
         navigate("/", { replace: true })
@@ -21,24 +22,24 @@ function Header(){
         dispatch(callLogoutAPI());
         
         alert('로그아웃이 되어 메인화면으로 이동합니다.');
-        navigate("/", { replace: true })
+        navigate("/login", { replace: true })
         window.location.reload();
     }
 
-    function BeforeLogin() {
+    // function BeforeLogin() {
 
-        return (
-            <div>
-                <Link to="/login"><FcBusinessman />로그인</Link>
-            </div>
-        );
-    }
+    //     return (
+    //         <div>
+    //             <Link to="/login"><FcBusinessman />로그인</Link>
+    //         </div>
+    //     );
+    // }
 
     function AfterLogin() {
 
         return (            
             <div>
-                <button className={ HeaderCSS.HeaderBtn } onClick={ onClickLogoutHandler }>로그아웃</button>
+                <FcBusinessman /> | <button className={ HeaderCSS.HeaderBtn } onClick={ onClickLogoutHandler }>로그아웃</button>
             </div>
         );
     }
@@ -54,7 +55,8 @@ function Header(){
                     GROUPWARE
             </button>
             
-            { (isLogin == null || isLogin === undefined) ? <BeforeLogin /> : <AfterLogin />}
+            { <AfterLogin /> }
+            {/* { (isLogin == null || isLogin === undefined) ? <BeforeLogin /> : <AfterLogin />} */}
         </div>
     </>
     );

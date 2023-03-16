@@ -1,0 +1,52 @@
+.memberDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 850px;
+    margin: 10px;
+    margin-left: -60px;
+}
+
+.memberTable {
+    width: 80%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+/* 
+.memberTable th {
+    text-align: center;
+    table-layout:fixed;
+} */
+
+.memberTable td {
+    padding: 10px;
+    height: 10px;
+    text-align: center;
+    word-break:break-all;
+    table-layout:fixed;
+}
+
+.memberInput{
+    width: 90%;
+    text-align: center;
+}
+
+.buttonDiv{
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.backBtn .saveBtn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    width: 250px;
+    border-radius: 25px;
+    background-color: white;
+    font-weight: bold;
+    justify-content: center;
+}

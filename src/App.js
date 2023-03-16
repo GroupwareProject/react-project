@@ -9,6 +9,7 @@ import AddminMember from "./pages/admin/AdminMember";
 import AdminSignUpMember from "./pages/admin/AdminSignUpMember";
 import Address from "./pages/address/Address";
 import Mypage from "./pages/mypage/Mypage";
+import Main from "./pages/main/Main";
 // import AdminTab from "./components/AdminTab";
 
 
@@ -17,8 +18,10 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route index element={ <Login />} />
           <Route path="/" element={ <Layout /> }>
-            <Route path="/login" element={ <Login /> }/>
+            <Route index element={ <Main /> }/>
+            {/* <Route path="/login" element={ <Login /> }/> */}
             {/* 공지사항 */}
             <Route path="/notice" element={ <Notice /> }/>
             <Route path="/noticeWrite" element={ <NoticeWrite /> } /> 

@@ -1,9 +1,44 @@
-.logindiv { 
+.backgroundDiv{
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /*수평 정렬*/
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.logindiv {
+    position: relative;
+    margin: 50px auto;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--padding);
+    background-color: #c4dfff;
+    border-radius: 7px;
+}
+
+.logindiv input {
+    margin-bottom: 25px;
+}
+
+.logindiv button {
+    background-color: white;
+    border-radius: 4px;
+}
+
+/* .logindiv { 
     height: 300px;
     width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0;
+    padding: 0;  
     background-color: white;
-}
+    border-radius: 25px; 
+} */

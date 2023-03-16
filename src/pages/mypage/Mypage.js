@@ -2,6 +2,7 @@ import MypageCSS from "./Mypage.module.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { decodeJwt } from '../../utils/tokenUtils';
+import moment from 'moment';
 
 import { callGetMemberAPI } from "../../apis/MemberAPICalls";
 
@@ -84,10 +85,10 @@ function Mypage(){
                             <td>
                                 <input
                                     className={ MypageCSS.memberInput }
-                                    type="text"
+                                    type="date"
                                     name="memberBirth"
                                     readOnly={true}
-                                    value={memberDetail.memberBirth || ''}
+                                    value={moment(memberDetail.memberBirth).format("YYYY-MM-DD") || ''}
                                 />
                             </td>
                         </tr>
@@ -144,10 +145,10 @@ function Mypage(){
                             <td>
                                 <input
                                     className={ MypageCSS.memberInput }
-                                    type="text"
+                                    type="date"
                                     name="memberStartDate"
                                     readOnly={true}
-                                    value={memberDetail.memberStartDate || ''}
+                                    value={moment(memberDetail.memberStartDate).format("YYYY-MM-DD") || ''}
                                 />
                             </td>
                         </tr>
