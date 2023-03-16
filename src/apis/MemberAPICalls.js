@@ -14,7 +14,7 @@ export const callGetMemberAPI = ({memberCode}) => {
         const result = await fetch(requestURL, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
+                // "Content-Type": "application/json",
                 "Accept": "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
             }

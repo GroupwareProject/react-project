@@ -1,7 +1,7 @@
 import AdminSignUpMemberCSS from "./AdminSignUpMember.module.css";
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect, useRef } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import { callRegisterAPI } from "../../apis/MemberAPICalls";
 function AdminSignUpMember(){
@@ -9,7 +9,6 @@ function AdminSignUpMember(){
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const member = useSelector(state => state.memberReducer); 
 
     const [form, setForm] = useState({
         memberCode: '',
@@ -151,7 +150,6 @@ function AdminSignUpMember(){
                                 />
                             </td>
                         </tr>
-                        
                         <tr>
                             <th>내선번호</th>
                             <td>

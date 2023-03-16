@@ -39,13 +39,19 @@ function Login(){
         });
     };
     
-    const onClickLoginHandler = () => {
+    const handleOnClick = () => {
         dispatch(callLoginAPI({
             form: form
         }));
         alert('로그인이 완료되었습니다.');
         // window.location.reload();
     }
+
+    const handleOnKeyPress = e => {
+        if(e.key === 'Enter'){
+            handleOnClick();
+        }
+    };
 
     return(
         <div className={ LoginCSS.logindiv }>
@@ -64,9 +70,10 @@ function Login(){
                 placeholder="비밀번호 입력"
                 autoComplete="off"
                 onChange={ onChangeHandler }
+                onKeyPress={ handleOnKeyPress }
             />
             <button
-                onClick={ onClickLoginHandler }
+                onClick={ handleOnClick }
             >
                 로그인
             </button>

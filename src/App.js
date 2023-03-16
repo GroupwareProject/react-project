@@ -31,7 +31,7 @@ function App() {
             {/* 주소록 */}
             <Route path="/address" element={ <Address /> }/>
             {/* 마이페이지 */}
-            <Route path="/myPage" element={ <Mypage /> }/>
+            <Route path="/mypage" element={ <Mypage /> }/>
           </Route>
         </Routes>
       </BrowserRouter>
