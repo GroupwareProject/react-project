@@ -1,5 +1,4 @@
-// import NoticeDetailCSS from "./NoticeDetail.module.css";
-import NoticeWriteCSS from "./NoticeDetail.module.css";
+import NoticeDetailCSS from "./NoticeDetail.module.css";
 import { useNavigate } from 'react-router-dom';
 import React,{ useState } from "react";
 
@@ -25,14 +24,14 @@ function NoticeDetail() {
     return(
         <form>
         {/* <form action="" method="post"> */}
-            <div className={ NoticeWriteCSS.noticeWriteDiv }>
-                <h2>공지사항 글쓰기</h2>
-                <table className={ NoticeWriteCSS.noticeWriteTable }>
+            <div className={ NoticeDetailCSS.noticeWriteDiv }>
+                <h2>공지사항 수정/삭제하기</h2>
+                <table className={ NoticeDetailCSS.noticeWriteTable }>
                     <tbody>
                         <tr>
                             <td>
                                 <input 
-                                    className={ NoticeWriteCSS.noticeWriteInput }
+                                    className={ NoticeDetailCSS.noticeWriteInput }
                                     name="noticeTitle"
                                     placeholder="제목을 작성해주세요."
                                     type="text"
@@ -43,7 +42,7 @@ function NoticeDetail() {
                         <tr>
                             <td>
                                 <textarea
-                                    className={ NoticeWriteCSS.contentTextArea }
+                                    className={ NoticeDetailCSS.contentTextArea }
                                     name="noticeContent"
                                     placeholder="내용을 작성해주세요."
                                     onChange={ onChangeHandler }
@@ -54,7 +53,7 @@ function NoticeDetail() {
                         <tr>
                             <td>
                                 <input
-                                    className={ NoticeWriteCSS.noticeWriteInput }
+                                    className={ NoticeDetailCSS.noticeWriteInput }
                                     type="file"
                                     name="noticeFile"
                                     onChange={ changeFileHandler }
@@ -64,23 +63,23 @@ function NoticeDetail() {
                     </tbody>                    
                 </table>            
             
-                <div className={ NoticeWriteCSS.buttonDiv }>
+                <div className={ NoticeDetailCSS.buttonDiv }>
                         <button
-                            className={ NoticeWriteCSS.backBtn }
+                            className={ NoticeDetailCSS.backBtn }
                             onClick={ () => navigate("/notice") }
                         >
                             돌아가기
                         </button>
                         <button
-                            className={ NoticeWriteCSS.backBtn }
-                            onClick={ () => navigate("/notice") }
+                            className={ NoticeDetailCSS.backBtn }
+                            // onClick={ onClickEditHandler }
                         >
                             수정하기
                         </button>
                         
                         <button       
-                            className={ NoticeWriteCSS.saveBtn }
-                            type="submit"       
+                            className={ NoticeDetailCSS.deleteBtn }
+                            // onClick={ onClickDeleteHandler }       
                         >
                             삭제하기
                         </button>

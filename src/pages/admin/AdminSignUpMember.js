@@ -172,7 +172,7 @@ function AdminSignUpMember(){
                                 />
                             </td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <th>퇴사일</th>
                             <td>
                                 <input
@@ -182,7 +182,7 @@ function AdminSignUpMember(){
                                     onChange={ onChangeHandler }
                                 />
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </div>

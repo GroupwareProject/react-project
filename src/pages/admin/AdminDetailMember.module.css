@@ -50,3 +50,10 @@
     font-weight: bold;
     justify-content: center;
 }
+
+.deleteBtn {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 0, 0, 0.494);
+    justify-content: center;
+}

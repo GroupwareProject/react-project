@@ -5,11 +5,15 @@ const initialState = [];
 
 /* 액션 */
 export const GET_MEMBER     = 'member/GET_MEMBER';
+export const GET_MEMBERS    = 'member/GET_MEMBERS';
+export const PUT_MEMBER     = 'member/PUT_MEMBER';
 export const POST_LOGIN     = 'member/POST_LOGIN';
 export const POST_REGISTER  = 'member/POST_REGISTER';
 
 const actions = createActions({
     [GET_MEMBER]: () => {},
+    [GET_MEMBERS]: () => {},
+    [PUT_MEMBER]: () => {},
     [POST_LOGIN]: () => {},
     [POST_REGISTER]: () => {}
 });
@@ -18,6 +22,14 @@ const actions = createActions({
 const memberReducer = handleActions(
     {
         [GET_MEMBER]: (state, { payload }) => {
+            
+            return payload;
+        },
+        [GET_MEMBERS]: (state, { payload }) => {
+            
+            return payload;
+        },
+        [PUT_MEMBER]: (state, { payload }) => {
             
             return payload;
         },

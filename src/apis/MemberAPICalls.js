@@ -1,5 +1,7 @@
 import { 
     GET_MEMBER
+  , GET_MEMBERS
+  , PUT_MEMBER
   , POST_LOGIN
   , POST_REGISTER
 } from '../modules/MemberModule'; 
@@ -27,6 +29,29 @@ export const callGetMemberAPI = ({memberCode}) => {
         
     };
 }
+
+export const callGetMembersAPI = () => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/members`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
+            },
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callGetMembersAPI RESULT : ', result);
+
+        dispatch({ type: GET_MEMBERS,  payload: result.data });
+        
+    };
+}
+
 
 export const callLoginAPI = ({form}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/auth/login`;
