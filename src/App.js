@@ -19,10 +19,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* <Route index element={ <Login />} /> */}
+          {/* 기본 로그인 화면 */}
+          <Route path="/login" element={ <Login /> }/>
+
+          {/* 로그인 후 화면 */}
           <Route path="/" element={ <Layout /> }>
             <Route index element={ <Main /> }/>
-            <Route path="/login" element={ <Login /> }/>
             {/* 공지사항 */}
             <Route path="/notice" element={ <Notice /> }/>
             <Route path="/notice/write" element={ <NoticeWrite /> } /> 

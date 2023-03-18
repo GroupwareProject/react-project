@@ -26,14 +26,14 @@ function Header(){
         window.location.reload();
     }
 
-    function BeforeLogin() {
+    // function BeforeLogin() {
 
-        return (
-            <div>
-                <Link to="/login"><FcBusinessman />로그인</Link>
-            </div>
-        );
-    }
+    //     return (
+    //         <div>
+    //             <Link to="/login"><FcBusinessman />로그인</Link>
+    //         </div>
+    //     );
+    // }
 
     function AfterLogin() {
 
@@ -55,8 +55,8 @@ function Header(){
                     GROUPWARE
             </button>
             
-            {/* { <AfterLogin /> } */}
-            { (isLogin == null || isLogin === undefined) ? <BeforeLogin /> : <AfterLogin />}
+            { <AfterLogin /> }
+            {/* { (isLogin == null || isLogin === undefined) ? <BeforeLogin /> : <AfterLogin />} */}
         </div>
     </>
     );

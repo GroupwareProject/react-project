@@ -18,12 +18,12 @@ function Login(){
         memberPwd: ''
     });
 
-    // useEffect(() => {
+    useEffect(() => {
         
-    //     if(loginMember.status === 200){
-    //         console.log("[Login] Login SUCCESS {}", loginMember);
-    //         // navigate("/", { replace: true });
-    //     }
+        if(loginMember.status === 200){
+            console.log("[Login] Login SUCCESS {}", loginMember);
+            // navigate("/", { replace: true });
+        }
 
     //     // /* 회원 가입 후 로그인 페이지로 안내 되었을 때 */
     //     // if(loginMember.status === 201){
@@ -31,8 +31,8 @@ function Login(){
     //     //     loginMember.status = 100  // Continue
     //     //     dispatch({ type: POST_REGISTER,  payload: loginMember });
     //     // }  
-    // }
-    // ,[loginMember]);
+    }
+    ,[loginMember]);
 
     /* 로그인 상태일 시 로그인페이지로 접근 방지 */
     if(loginMember.length > 0) {
