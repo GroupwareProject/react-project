@@ -13,14 +13,14 @@ function AdminMember(){
     const memberList = members.data;
     console.log('AdminMember', memberList);
 
-    // 회원등록 버튼 
+    // 회원 등록 버튼 
     const onClickAddHandler = () => {
-       navigate("/adminSignUpMember");
+       navigate("/admin/signup");
     }
 
-    // 회원수정 버튼
+    // 회원 정보 클릭 시, 수정페이지로 이동
     const onClickTableTr = (memberCode) => {
-        navigate(`/adminEditMember/${memberCode}`, { replace: false });
+        navigate(`/admin/detail/${memberCode}`, { replace: false });
     }
 
     useEffect(

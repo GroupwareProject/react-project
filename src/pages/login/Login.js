@@ -52,7 +52,7 @@ function Login(){
             form: form
         }));
         alert('로그인이 완료되었습니다.');
-        navigate("/notice", { replace: true });
+        navigate("/", { replace: true });
         // window.location.reload();
     }
 

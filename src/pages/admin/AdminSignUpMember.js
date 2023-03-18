@@ -39,7 +39,7 @@ function AdminSignUpMember(){
         }));
 
         alert('회원 등록을 완료하였습니다.');
-        navigate("/admin", { replace: true })
+        navigate("/admin/member", { replace: true })
     }
 
     return(
@@ -189,14 +189,13 @@ function AdminSignUpMember(){
             <div className={ AdminSignUpMemberCSS.buttonDiv }>
                     <button
                         className={ AdminSignUpMemberCSS.backBtn }
-                        onClick={ () => navigate("/admin") }
+                        onClick={ () => navigate("/admin/member") }
                     >
                         돌아가기
                     </button>
                     
                     <button       
-                        className={ AdminSignUpMemberCSS.saveBtn }
-                        // type="submit"    
+                        className={ AdminSignUpMemberCSS.saveBtn }  
                         onClick = { onClickRegisterHandler }          
                     >
                         저장하기

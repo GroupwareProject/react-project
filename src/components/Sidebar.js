@@ -12,7 +12,8 @@ function Sidebar() {
                 {/* <li><Link to="/messenger"><FcSms /> 메신저</Link></li> */}
                 <li><Link to="/address"><FcTwoSmartphones /> 주소록</Link></li>
                 <li><Link to="/mypage"><FcPortraitMode /> 마이페이지</Link></li>
-                <li><Link to="/admin"><FcServices /> 관리자</Link></li>
+                <li><Link to="/admin/member"><FcServices /> 사원관리</Link></li>
+                <li><Link to="/admin/work"><FcServices /> 근태관리</Link></li>
                 <li><Link to="/notice/detail"> [확인용]공지사항 수정</Link></li>
                 <li><Link to="/admin/detail"> [확인용]회원 수정</Link></li>
             </ul>

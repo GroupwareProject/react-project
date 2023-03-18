@@ -188,7 +188,7 @@ function AdminDetailMember(){
             <div className={ AdminDetailMemberCSS.buttonDiv }>
                     <button
                         className={ AdminDetailMemberCSS.backBtn }
-                        onClick={ () => navigate("/admin") }
+                        onClick={ () => navigate("/admin/member") }
                     >
                         돌아가기
                     </button>

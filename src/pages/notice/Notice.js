@@ -5,12 +5,14 @@ function Notice() {
 
     const navigate = useNavigate();
 
+    // 공지사항 글쓰기 버튼
     const onClickWriteHandler = () => {
-       navigate("/noticeWrite");
+       navigate("/notice/write");
     }
 
-    // const onClickTableTr = (noticeCode) => {
-    //     navigate(`/noticeDetail/${noticeCode}`, { replace: false });
+    // 회원 정보 클릭 시, 수정페이지로 이동
+    // const onClickTableTr = (noticeNo) => {
+    //     navigate(`/notice/detail/${noticeNo}`, { replace: false });
     // }
 
     return(
@@ -38,12 +40,26 @@ function Notice() {
                         </tr>
                     </thead> 
                     <tbody>
-                        <tr>
+                        {/* { Array.isArray(noticeList) && noticeList.map(
+                            (noticeList) => (
+                                <tr
+                                    key={ noticeList.noticeNo }
+                                    onClick={ () => onClickTableTr(noticeList.noticeNo) }
+                                >
+                                    <td>{noticeList.noticeNo}</td>
+                                    <td>{noticeList.noticeTitle}</td>
+                                    <td>{noticeList.noticeDate}</td>
+                                    <td>{noticeList.noticeViews}</td>
+                                </tr>)
+                        )} */}
+
+                        {/* 값 들어가는지 확인 */}
+                        {/* <tr>
                             <td>1</td>
                             <td>공지사항 제목 테스트입니다.</td>
                             <td>2023/03/08</td>
                             <td>0</td>
-                        </tr>
+                        </tr> */}
                     </tbody>            
                 </table>  
             </div>

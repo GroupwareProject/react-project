@@ -25,7 +25,7 @@ function NoticeWrite() {
         <form>
         {/* <form action="" method="post"> */}
             <div className={ NoticeWriteCSS.noticeWriteDiv }>
-                <h2>공지사항 글쓰기</h2>
+                <h2>공지사항 작성하기</h2>
                 <table className={ NoticeWriteCSS.noticeWriteTable }>
                     <tbody>
                         <tr>
