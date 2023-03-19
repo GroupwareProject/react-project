@@ -1,4 +1,4 @@
-.noticeWriteDiv {
+.boardWriteDiv {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -8,13 +8,13 @@
     margin: 10px;
 }
 
-.noticeWriteTable{
+.boardWriteTable{
     width: 80%;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
-.noticeWriteTable td {
+.boardWriteTable td {
     padding: 10px;
     height: 10px;
     text-align: center;
@@ -28,7 +28,7 @@
     resize: none;
 }
 
-.noticeWriteInput{
+.boardWriteInput{
     width: 90%;
 }
 

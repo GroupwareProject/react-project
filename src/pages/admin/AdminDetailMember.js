@@ -1,41 +1,82 @@
 import AdminDetailMemberCSS from "./AdminDetailMember.module.css";
-import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { decodeJwt } from '../../utils/tokenUtils';
+import moment from 'moment';
+
+import { callGetMemberAPI, 
+    callGetMemberUpdateAPI } from "../../apis/MemberAPICalls";
 
 function AdminDetailMember(){
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const member = useSelector(state => state.memberReducer); 
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));   
+    const memberDetail = member.data;
 
-    // const dispatch = useDispatch();
+    console.log('memberDetail', memberDetail)
 
-    // const [form, setForm] = useState({
-    //     memberCode: '',
-    //     deptCode: '',
-    //     jobCode: '',
-    //     memberPwd: '',
-    //     memberName: '',
-    //     memberBirth: '',
-    //     memberPhone: '',
-    //     memberEmail: '',
-    //     memberAddress: '',
-    //     memberExtension: '',
-    //     memberStartDate: '',
-    //     memberEndDate: '',
-    //     memberIsOut: '',
-    // })
+    const [form, setForm] = useState({});
 
-    // const onChangeHandler = (e) => {
-    //     setForm({
-    //         ...form,
-    //         [e.target.name]: e.target.value
-    //     });
-    // };
+    useEffect(
+        () => {    
+            if(token !== null) {
+                dispatch(callGetMemberAPI({
+                    memberCode: token.sub
+                }));            
+            }
+        }
+        ,[]
+    );
+
+    const onChangeHandler = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
+            // memberCode: memberDetail.memberCode,
+            // deptCode: memberDetail.deptCode,
+            // jobCode: memberDetail.jobCode,
+            // memberPwd: memberDetail.memberPwd,
+            // memberName: memberDetail.memberName,
+            // memberBirth: memberDetail.memberBirth,
+            // memberPhone: memberDetail.memberPhone,
+            // memberEmail: memberDetail.memberEmail,
+            // memberAddress: memberDetail.memberAddress,
+            // memberExtension: memberDetail.memberExtension,
+            // memberStartDate: memberDetail.memberStartDate,
+            // memberEndDate: memberDetail.memberEndDate
+        });
+    };
+
+    const onClickEditHandler = () => {
+        
+        const formData = new FormData();
+        formData.append("memberCode", form.memberCode);
+        formData.append("deptCode", form.deptCode);
+        formData.append("jobCode", form.jobCode);
+        formData.append("memberPwd", form.memberPwd);
+        formData.append("memberName", form.memberName);
+        formData.append("memberBirth", form.memberBirth);
+        formData.append("memberPhone", form.memberPhone);
+        formData.append("memberEmail", form.memberEmail);
+        formData.append("memberAddress", form.memberAddress);
+        formData.append("memberExtension", form.memberExtension);
+        formData.append("memberStartDate", form.memberStartDate);
+        formData.append("memberEndDate", form.memberEndDate);
+        
+        dispatch(callGetMemberUpdateAPI({
+            form: formData
+        }));
+
+        navigate('/admin/member', {replace: true});
+    }
 
     return(
         <div>
         {/* <form action="" method="post"> */}
-            {/* { memberDetail && */}
+            { memberDetail &&
             <div className={ AdminDetailMemberCSS.memberDiv }>
                 <h2>회원 수정/삭제하기</h2>
                 <table className={ AdminDetailMemberCSS.memberTable }>
@@ -47,8 +88,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="memberCode"
-                                    // onChange={ onChangeHandler }
-                                    // value={ memberDetail.memberCode || ''}
+                                    onChange={ onChangeHandler }
+                                    value={ memberDetail.memberCode || ''}
                                 />
                             </td>
                         </tr>
@@ -59,8 +100,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="deptCode"
-                                    // onChange={ onChangeHandler }
-                                    // value={memberDetail.deptCode || ''}
+                                    onChange={ onChangeHandler }
+                                    value={ memberDetail.deptCode || ''}
                                 />
                             </td>
                         </tr>
@@ -71,8 +112,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="jobCode"
-                                    // onChange={ onChangeHandler }
-                                    // value={memberDetail.jobCode || ''}
+                                    onChange={ onChangeHandler }
+                                    value={memberDetail.jobCode || ''}
                                 />
                             </td>
                         </tr>
@@ -83,7 +124,7 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="password"
                                     name="memberPwd"
-                                    // onChange={ onChangeHandler }
+                                    onChange={ onChangeHandler }
                                 />
                             </td>
                         </tr>
@@ -94,8 +135,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="memberName"
-                                    // onChange={ onChangeHandler }
-                                    // value={memberDetail.memberName || ''}
+                                    onChange={ onChangeHandler }
+                                    value={memberDetail.memberName || ''}
                                 />
                             </td>
                         </tr>
@@ -106,8 +147,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="date"
                                     name="memberBirth"
-                                    // onChange={ onChangeHandler }
-                                    // value={moment(memberDetail.memberBirth).format("YYYY-MM-DD") || ''}
+                                    onChange={ onChangeHandler }
+                                    value={moment(memberDetail.memberBirth).format("YYYY-MM-DD") || ''}
                                 />
                             </td>
                         </tr>
@@ -118,8 +159,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="memberPhone"
-                                    // onChange={ onChangeHandler }
-                                    // value={memberDetail.memberPhone || ''}
+                                    onChange={ onChangeHandler }
+                                    value={memberDetail.memberPhone || ''}
                                 />
                             </td>
                         </tr>
@@ -130,8 +171,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="memberEmail"
-                                    // onChange={ onChangeHandler }
-                                    // value={memberDetail.memberEmail || ''}
+                                    onChange={ onChangeHandler }
+                                    value={memberDetail.memberEmail || ''}
                                 />
                             </td>
                         </tr>
@@ -142,8 +183,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="memberAddress"
-                                    // onChange={ onChangeHandler }
-                                    // value={memberDetail.memberAddress || ''}
+                                    onChange={ onChangeHandler }
+                                    value={memberDetail.memberAddress || ''}
                                 />
                             </td>
                         </tr>
@@ -154,8 +195,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="text"
                                     name="memberExtension"
-                                    // onChange={ onChangeHandler }
-                                    // value={memberDetail.memberExtension || ''}
+                                    onChange={ onChangeHandler }
+                                    value={memberDetail.memberExtension || ''}
                                 />
                             </td>
                         </tr>
@@ -166,8 +207,8 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="date"
                                     name="memberStartDate"
-                                    // onChange={ onChangeHandler }
-                                    // value={moment(memberDetail.memberStartDate).format("YYYY-MM-DD") || ''}
+                                    onChange={ onChangeHandler }
+                                    value={moment(memberDetail.memberStartDate).format("YYYY-MM-DD") || ''}
                                 />
                             </td>
                         </tr>
@@ -178,13 +219,14 @@ function AdminDetailMember(){
                                     className={ AdminDetailMemberCSS.memberInput }
                                     type="date"
                                     name="memberEndDate"
-                                    // onChange={ onChangeHandler }
+                                    onChange={ onChangeHandler }
                                 />
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+            }
             <div className={ AdminDetailMemberCSS.buttonDiv }>
                     <button
                         className={ AdminDetailMemberCSS.backBtn }
@@ -195,7 +237,7 @@ function AdminDetailMember(){
                     
                     <button       
                         className={ AdminDetailMemberCSS.saveBtn }
-                        // onClick = { onClickEditHandler }          
+                        onClick = { onClickEditHandler }          
                     >
                         수정하기
                     </button>
@@ -206,7 +248,6 @@ function AdminDetailMember(){
                         삭제하기
                     </button>
             </div>
-            
         </div>
     );
 }

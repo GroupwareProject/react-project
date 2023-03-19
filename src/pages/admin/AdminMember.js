@@ -9,23 +9,23 @@ function AdminMember(){
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const members = useSelector(state => state.memberReducer);  
-    const memberList = members.data;
-    console.log('AdminMember', memberList);
+    const AdminMember = useSelector(state => state.memberReducer);  
+
+    console.log('AdminMember', AdminMember); // 값이 안나옴
 
     // 회원 등록 버튼 
     const onClickAddHandler = () => {
-       navigate("/admin/signup");
+       navigate("/admin/member/signup");
     }
 
     // 회원 정보 클릭 시, 수정페이지로 이동
     const onClickTableTr = (memberCode) => {
-        navigate(`/admin/detail/${memberCode}`, { replace: false });
+        navigate(`/admin/member/detail/${memberCode}`, { replace: false });
     }
 
     useEffect(
         () => {
-            dispatch(callGetMembersAPI());            
+            dispatch(callGetMembersAPI());          
         }
         ,[]
     );
@@ -59,18 +59,18 @@ function AdminMember(){
                         </tr>
                     </thead> 
                     <tbody>
-                        { Array.isArray(memberList) && memberList.map(
-                            (memberList) => (
+                        { Array.isArray(AdminMember) && AdminMember.map(
+                            (member, memberIndex) => (
                                 <tr
-                                    key={ memberList.memberCode }
-                                    onClick={ () => onClickTableTr(memberList.memberCode) }
+                                    key={ member.memberCode }
+                                    onClick={ () => onClickTableTr(member.memberCode) }
                                 >
-                                    <td>{memberList.memberCode}</td>
-                                    <td>{memberList.deptCode}</td>
-                                    <td>{memberList.jobCode}</td>
-                                    <td>{memberList.memberName}</td>
-                                    <td>{memberList.memberExtension}</td>
-                                    <td>{memberList.memberPhone}</td>
+                                    <td>{member.memberCode}</td>
+                                    <td>{member.deptCode}</td>
+                                    <td>{member.jobCode}</td>
+                                    <td>{member.memberName}</td>
+                                    <td>{member.memberExtension}</td>
+                                    <td>{member.memberPhone}</td>
                                 </tr>)
                         )}
                                 {/* <tr>

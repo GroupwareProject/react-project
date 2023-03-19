@@ -52,6 +52,43 @@ export const callGetMembersAPI = () => {
     };
 }
 
+export const callGetMemberUpdateAPI = ({memberCode}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/members/update/${memberCode}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
+            },
+            // body: JSON.stringify({
+                // memberCode: form.memberCode,
+                // deptCode: form.deptCode,
+                // jobCode: form.jobCode,  
+                // memberPwd: form.memberPwd,
+                // memberName: form.memberName,
+                // memberBirth: form.memberBirth,
+                // memberPhone: form.memberPhone,
+                // memberEmail: form.memberEmail,
+                // memberAddress: form.memberAddress,
+                // memberExtension: form.memberExtension,
+                // memberStartDate: form.memberStartDate,
+                // memberEndDate: form.memberEndDate,
+                // memberIsOut: form.memberIsOut
+            // })
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callGetMemberUpdateAPI RESULT : ', result);
+
+        dispatch({ type: PUT_MEMBER,  payload: result.data });
+        
+    };
+}
+
 
 export const callLoginAPI = ({form}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/auth/login`;

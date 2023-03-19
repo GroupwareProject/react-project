@@ -1,18 +1,12 @@
-import NoticeDetailCSS from "./NoticeDetail.module.css";
+import BoardDetailCSS from "./BoardDetail.module.css";
 import { useNavigate } from 'react-router-dom';
 import React,{ useState } from "react";
 
-function NoticeDetail() {
+function BoardDetail() {
 
     const navigate = useNavigate();
 
-    const [file, setFile] = useState(null);
-
     const [form, setForm] = useState({});
-
-    const changeFileHandler = (e) => {
-        setFile(e.target.files[0]);
-    }
 
     const onChangeHandler = (e) => {
         setForm({
@@ -24,14 +18,14 @@ function NoticeDetail() {
     return(
         <form>
         {/* <form action="" method="post"> */}
-            <div className={ NoticeDetailCSS.noticeWriteDiv }>
-                <h2>공지사항 수정/삭제하기</h2>
-                <table className={ NoticeDetailCSS.noticeWriteTable }>
+            <div className={ BoardDetailCSS.boardWriteDiv }>
+                <h2>게시판 수정/삭제하기</h2>
+                <table className={ BoardDetailCSS.boardWriteTable }>
                     <tbody>
                         <tr>
                             <td>
                                 <input 
-                                    className={ NoticeDetailCSS.noticeWriteInput }
+                                    className={ BoardDetailCSS.boardWriteInput }
                                     name="noticeTitle"
                                     placeholder="제목을 작성해주세요."
                                     type="text"
@@ -42,7 +36,7 @@ function NoticeDetail() {
                         <tr>
                             <td>
                                 <textarea
-                                    className={ NoticeDetailCSS.contentTextArea }
+                                    className={ BoardDetailCSS.contentTextArea }
                                     name="noticeContent"
                                     placeholder="내용을 작성해주세요."
                                     onChange={ onChangeHandler }
@@ -50,35 +44,25 @@ function NoticeDetail() {
                                 </textarea>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <input
-                                    className={ NoticeDetailCSS.noticeWriteInput }
-                                    type="file"
-                                    name="noticeFile"
-                                    onChange={ changeFileHandler }
-                                />
-                            </td>
-                        </tr>
                     </tbody>                    
                 </table>            
             
-                <div className={ NoticeDetailCSS.buttonDiv }>
+                <div className={ BoardDetailCSS.buttonDiv }>
                         <button
-                            className={ NoticeDetailCSS.backBtn }
-                            onClick={ () => navigate("/notice") }
+                            className={ BoardDetailCSS.backBtn }
+                            onClick={ () => navigate("/board") }
                         >
                             돌아가기
                         </button>
                         <button
-                            className={ NoticeDetailCSS.editBtn }
+                            className={ BoardDetailCSS.editBtn }
                             // onClick={ onClickEditHandler }
                         >
                             수정하기
                         </button>
                         
                         <button       
-                            className={ NoticeDetailCSS.deleteBtn }
+                            className={ BoardDetailCSS.deleteBtn }
                             // onClick={ onClickDeleteHandler }       
                         >
                             삭제하기
@@ -89,4 +73,4 @@ function NoticeDetail() {
     );
 }
 
-export default NoticeDetail;
+export default BoardDetail;

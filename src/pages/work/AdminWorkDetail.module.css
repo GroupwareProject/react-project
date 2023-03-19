@@ -1,0 +1,26 @@
+.adminWorkDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+}
+
+.adminWorkTable th, td {
+    padding: 10px;
+    height: 10px;
+    text-align: center;
+    word-break: break-all;
+    table-layout: fixed;
+    font-size: small;
+}
+
+.adminWorkTable tr:hover { 
+    background-color: #FFFFF3; 
+}
+
+.adminWorkTable tr {
+    cursor: pointer;
+}

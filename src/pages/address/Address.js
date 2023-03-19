@@ -1,6 +1,23 @@
 import AddressCSS from "./Address.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+
+import{ callGetMembersAPI } from "../../apis/MemberAPICalls"
 
 function Address() {
+
+    const dispatch = useDispatch();
+    const AdminMember = useSelector(state => state.memberReducer);  
+
+    console.log('AdminMember', AdminMember); // 값이 안나옴
+
+
+    useEffect(
+        () => {
+            dispatch(callGetMembersAPI());          
+        }
+        ,[]
+    );
 
     return(
         <>
@@ -26,14 +43,25 @@ function Address() {
                         </tr>
                     </thead> 
                     <tbody>
-                        <tr>
+                        { Array.isArray(AdminMember) && AdminMember.map(
+                            (member, memberIndex) => (
+                                <tr>
+                                    <td>{member.memberCode}</td>
+                                    <td>{member.deptCode}</td>
+                                    <td>{member.jobCode}</td>
+                                    <td>{member.memberName}</td>
+                                    <td>{member.memberExtension}</td>
+                                    <td>{member.memberPhone}</td>
+                                </tr>)
+                        )}
+                        {/* <tr>
                             <td>2000</td>
                             <td>운영팀</td>
                             <td>팀장</td>
                             <td>홍길동</td>
                             <td>0000</td>
                             <td>010-0000-0000</td>
-                        </tr>
+                        </tr> */}
                     </tbody>     
                 </table>  
             </div>
