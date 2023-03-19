@@ -1,9 +1,29 @@
+
+import moment from "moment";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { callNoticeListAPI } from "../../apis/NoticeApiCalls";
 import NoticeCSS from "./Notice.module.css";
+// import { decodeJwt } from "../../utils/tokenUtils";
 
 function Notice() {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const noticeList = useSelector(state => state.noticeReducer);
+    // const noticeList = notice.data;
+    // const token = decodeJwt(window.localStorage.getItem("accessToken"))
+    // const [noticeNo, setNoticeNo] = useState;
+
+    console.log('NoticeList', noticeList);
+
+    useEffect(
+        () => {
+            dispatch(callNoticeListAPI())
+        }
+        ,[]
+    )
 
     // 공지사항 글쓰기 버튼
     const onClickWriteHandler = () => {
@@ -11,9 +31,9 @@ function Notice() {
     }
 
     // 회원 정보 클릭 시, 수정페이지로 이동
-    // const onClickTableTr = (noticeNo) => {
-    //     navigate(`/notice/detail/${noticeNo}`, { replace: false });
-    // }
+    const onClickTableTr = (noticeNo) => {
+        navigate(`/notice/detail/${noticeNo}`, { replace: false });
+    }
 
     return(
         <>
@@ -27,31 +47,34 @@ function Notice() {
                 <table className={ NoticeCSS.noticeTable }>
                     <colgroup>
                         <col width="10%" />
-                        <col width="60%" />
+                        <col width="50%" />
                         <col width="20%" />
+                        <col width="10%" />
                         <col width="10%" />
                     </colgroup>
                     <thead style={{"text-align": "center", "backgroundColor": "#E0E3DA"}}>
                         <tr>
                             <th>글번호</th>
                             <th>제목</th>
-                            <th>등록일</th>
+                            <th>작성자</th>
                             <th>조회수</th>
+                            <th>등록일</th>
                         </tr>
                     </thead> 
                     <tbody>
-                        {/* { Array.isArray(noticeList) && noticeList.map(
-                            (noticeList) => (
+                        { Array.isArray(noticeList) && noticeList.map(
+                            (notice) => (
                                 <tr
-                                    key={ noticeList.noticeNo }
-                                    onClick={ () => onClickTableTr(noticeList.noticeNo) }
+                                    key={ notice.noticeNo }
+                                    onClick={ () => onClickTableTr(notice.noticeNo) }
                                 >
-                                    <td>{noticeList.noticeNo}</td>
-                                    <td>{noticeList.noticeTitle}</td>
-                                    <td>{noticeList.noticeDate}</td>
-                                    <td>{noticeList.noticeViews}</td>
+                                    <td>{notice.noticeNo}</td>
+                                    <td>{notice.noticeTitle}</td>
+                                    <td>{notice.memberCode}</td>
+                                    <td>{notice.noticeViews}</td>
+                                    <td>{moment(notice.noticeDate).format("YYYY-MM-DD") || ''}</td>
                                 </tr>)
-                        )} */}
+                        )}
 
                         {/* 값 들어가는지 확인 */}
                         {/* <tr>
