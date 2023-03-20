@@ -1,18 +1,43 @@
 import NoticeWriteCSS from "./NoticeWrite.module.css";
 import { useNavigate } from 'react-router-dom';
 import React,{ useState } from "react";
+import { useDispatch } from "react-redux";
+import { dataSave } from "../../modules/NoticeModule";
+
+
 
 function NoticeWrite() {
 
+    const [noticeTitle, setNoticeTitle] = useState('');
+    const [noticeContent, setNoticeContent] = useState('');
+    const dispatch =useDispatch();
+
+
     const navigate = useNavigate();
 
-    const [file, setFile] = useState(null);
+    const onSave = () => {
+        const _inputData = {
+            noticeTitle: noticeTitle,
+            noticeContent: noticeContent
+        }
+
+        dispatch(dataSave(_inputData))
+
+        setNoticeTitle('')
+        setNoticeContent('')
+
+
+    }
+
+    
+
+    // const [file, setFile] = useState(null);
 
     const [form, setForm] = useState({});
 
-    const changeFileHandler = (e) => {
-        setFile(e.target.files[0]);
-    }
+    // const changeFileHandler = (e) => {
+    //     setFile(e.target.files[0]);
+    // }
 
     const onChangeHandler = (e) => {
         setForm({
@@ -50,7 +75,7 @@ function NoticeWrite() {
                                 </textarea>
                             </td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td>
                                 <input
                                     className={ NoticeWriteCSS.noticeWriteInput }
@@ -59,7 +84,7 @@ function NoticeWrite() {
                                     onChange={ changeFileHandler }
                                 />
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>                    
                 </table>            
             

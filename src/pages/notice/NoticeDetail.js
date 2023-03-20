@@ -1,18 +1,32 @@
 import NoticeDetailCSS from "./NoticeDetail.module.css";
-import { useNavigate } from 'react-router-dom';
-import React,{ useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
+import React,{ useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { callNoticeDetailAPI } from "../../apis/NoticeAPICalls";
 
 function NoticeDetail() {
 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const params = useParams();
+    const notice = useSelector(state => state.noticeReducer);
 
-    const [file, setFile] = useState(null);
-
+    // const [file, setFile] = useState(null);
     const [form, setForm] = useState({});
 
-    const changeFileHandler = (e) => {
-        setFile(e.target.files[0]);
-    }
+    // console.log('noticeNo', params.noticeNo);
+
+    useEffect(
+        () => {
+            dispatch(callNoticeDetailAPI({
+                noticeNo: params.noticeNo
+            }));
+        }
+        , [] );
+
+    // const changeFileHandler = (e) => {
+    //     setFile(e.target.files[0]);
+    // }
 
     const onChangeHandler = (e) => {
         setForm({
@@ -50,7 +64,7 @@ function NoticeDetail() {
                                 </textarea>
                             </td>
                         </tr>
-                        <tr>
+                        {/* <tr>
                             <td>
                                 <input
                                     className={ NoticeDetailCSS.noticeWriteInput }
@@ -59,7 +73,7 @@ function NoticeDetail() {
                                     onChange={ changeFileHandler }
                                 />
                             </td>
-                        </tr>
+                        </tr> */}
                     </tbody>                    
                 </table>            
             
