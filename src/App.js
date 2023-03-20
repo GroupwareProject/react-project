@@ -14,6 +14,7 @@ import Mypage from "./pages/mypage/Mypage";
 import AdminMember from "./pages/admin/AdminMember";
 import AdminSignUpMember from "./pages/admin/AdminSignUpMember";
 import AdminDetailMember from "./pages/admin/AdminDetailMember";
+import ToDo from "./pages/calendar/Todo";
 
 
 function App() {
@@ -22,11 +23,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* 기본 로그인 화면 */}
+          <Route index element={<Login />}/>
           <Route path="/login" element={ <Login /> }/>
 
           {/* 로그인 후 화면 */}
           <Route path="/" element={ <Layout /> }>
-            <Route index element={ <Main /> }/>
+            <Route path="/main" element={ <Main /> }/>
 
             {/* 공지사항 */}
             <Route path="/notice" element={ <Notice /> }/>
@@ -40,6 +42,7 @@ function App() {
             
             {/* 캘린더 */}
             <Route path="/calendar" element={ <Calendar /> }/>
+            <Route path="/calendar/todo" element={ <ToDo /> }/>
             
             {/* 주소록 */}
             <Route path="/address" element={ <Address /> }/>
@@ -51,7 +54,7 @@ function App() {
             {/* 사원관리 */}
             <Route path="/admin/member" element={ <AdminMember /> }/>
             <Route path="/admin/member/signup" element={ <AdminSignUpMember /> }/>
-            <Route path="/admin/member/detail" element={ <AdminDetailMember /> }/>
+            <Route path="/admin/member/detail/:memberCode" element={ <AdminDetailMember /> }/>
 
           </Route>
         </Routes>

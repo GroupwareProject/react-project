@@ -2,6 +2,7 @@ import {
     GET_MEMBER
   , GET_MEMBERS
   , PUT_MEMBER
+  , DELETE_MEMBER
   , POST_LOGIN
   , POST_REGISTER
 } from '../modules/MemberModule'; 
@@ -52,33 +53,18 @@ export const callGetMembersAPI = () => {
     };
 }
 
-export const callGetMemberUpdateAPI = ({memberCode}) => {
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/members/update/${memberCode}`;
+export const callGetMemberUpdateAPI = ({form}) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/members/update`;
 
     return async (dispatch, getState) => {
 
         const result = await fetch(requestURL, {
-            method: "GET",
+            method: "PUT",
             headers: {
-                "Content-Type": "application/json",
                 "Accept": "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
             },
-            // body: JSON.stringify({
-                // memberCode: form.memberCode,
-                // deptCode: form.deptCode,
-                // jobCode: form.jobCode,  
-                // memberPwd: form.memberPwd,
-                // memberName: form.memberName,
-                // memberBirth: form.memberBirth,
-                // memberPhone: form.memberPhone,
-                // memberEmail: form.memberEmail,
-                // memberAddress: form.memberAddress,
-                // memberExtension: form.memberExtension,
-                // memberStartDate: form.memberStartDate,
-                // memberEndDate: form.memberEndDate,
-                // memberIsOut: form.memberIsOut
-            // })
+            body: form
         })
         .then(response => response.json());
 
@@ -89,6 +75,27 @@ export const callGetMemberUpdateAPI = ({memberCode}) => {
     };
 }
 
+export const callDeleteMemberAPI = (memberCode) => {
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/members/delete/${memberCode}`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
+            },
+        })
+        .then(response => response.json());
+
+        console.log('[MemberAPICalls] callDeleteMemberAPI RESULT : ', result);
+
+        dispatch({ type: DELETE_MEMBER,  payload: result });
+        
+    };
+}
 
 export const callLoginAPI = ({form}) => {
     const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/auth/login`;

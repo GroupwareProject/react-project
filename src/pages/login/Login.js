@@ -37,7 +37,7 @@ function Login(){
     /* 로그인 상태일 시 로그인페이지로 접근 방지 */
     if(loginMember.length > 0) {
         console.log("[Login] Login is already authenticated by the server");        
-        return <Link to="/"/>
+        return navigate("/main", { replace: true });
     }
     
     const onChangeHandler = (e) => {
@@ -52,7 +52,7 @@ function Login(){
             form: form
         }));
         alert('로그인이 완료되었습니다.');
-        navigate("/", { replace: true });
+        navigate("/main", { replace: true });
         // window.location.reload();
     }
 
