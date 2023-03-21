@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 import './Calendar.css';
 function Calendar(){
-    
+
+    const navigate = useNavigate();
     const [events, setEvents] = useState([]);
 
     const handleEventClick = (event) => {
@@ -32,6 +34,11 @@ function Calendar(){
 
     return (
         <div style= { { width: "700px" } }>
+            <div style= { { width: '100%', textAlign: 'right', fontSize: "10px"} }>
+                    <button onClick={ () => navigate("/calendar/todo") } >
+                            글 등록
+                    </button>   
+                </div>  
             <FullCalendar 
                 id="calendar"
                 defaultView="dayGridMonth" 

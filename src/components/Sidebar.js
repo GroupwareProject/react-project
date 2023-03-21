@@ -15,13 +15,13 @@ function Sidebar() {
                 <li><Link to="/address"><FcTwoSmartphones /> 주소록</Link></li>
                 <li><Link to="/mypage/member"><FcPortraitMode /> 마이페이지</Link></li>
                 <li><Link to="/admin/member"><FcServices /> 사원관리</Link></li>
-                <li><Link to="/admin/member/detail"> [확인용]사원관리 수정</Link></li>
 
                 {/* 보류 */}
                 {/* <li><Link to="/messenger"><FcSms /> 메신저</Link></li> */}
                 {/* <li><Link to="/mypage/work"><FcPortraitMode /> 나의 근태</Link></li> */}
                 {/* <li><Link to="/admin/work"><FcServices /> 근태관리</Link></li> */}
                 {/* <li><Link to="/admin/work/detail"> [확인용]근태관리</Link></li> */}
+                {/* <li><Link to="/admin/member/detail"> [확인용]사원관리 수정</Link></li> */}
             </ul>
         </div>
     );

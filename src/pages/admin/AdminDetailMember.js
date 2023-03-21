@@ -1,30 +1,37 @@
 import AdminDetailMemberCSS from "./AdminDetailMember.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { decodeJwt } from '../../utils/tokenUtils';
 import moment from 'moment';
 
-import { callGetMemberAPI, 
-    callGetMemberUpdateAPI } from "../../apis/MemberAPICalls";
+import { 
+    callGetMemberAPI, 
+    callGetMemberUpdateAPI,
+    callDeleteMemberAPI
+} from "../../apis/MemberAPICalls";
 
 function AdminDetailMember(){
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const params = useParams();
     const member = useSelector(state => state.memberReducer); 
-    const token = decodeJwt(window.localStorage.getItem("accessToken"));   
     const memberDetail = member.data;
+    const token = decodeJwt(window.localStorage.getItem("accessToken"));   
 
     console.log('memberDetail', memberDetail)
 
+    const [modifyMode, setModifyMode] = useState(false);
     const [form, setForm] = useState({});
-
+    
     useEffect(
         () => {    
+            console.log('memberCode : ',params.memberCode);
+
             if(token !== null) {
                 dispatch(callGetMemberAPI({
-                    memberCode: token.sub
+                    memberCode: params.memberCode
                 }));            
             }
         }
@@ -35,42 +42,67 @@ function AdminDetailMember(){
         setForm({
             ...form,
             [e.target.name]: e.target.value
-            // memberCode: memberDetail.memberCode,
-            // deptCode: memberDetail.deptCode,
-            // jobCode: memberDetail.jobCode,
-            // memberPwd: memberDetail.memberPwd,
-            // memberName: memberDetail.memberName,
-            // memberBirth: memberDetail.memberBirth,
-            // memberPhone: memberDetail.memberPhone,
-            // memberEmail: memberDetail.memberEmail,
-            // memberAddress: memberDetail.memberAddress,
-            // memberExtension: memberDetail.memberExtension,
-            // memberStartDate: memberDetail.memberStartDate,
-            // memberEndDate: memberDetail.memberEndDate
         });
     };
 
-    const onClickEditHandler = () => {
+    // 수정모드
+    const onClickEditModeHandler = () => {
+        setModifyMode(true);
+        setForm({
+            memberPwd: memberDetail.memberPwd,
+            memberPhone: memberDetail.memberPhone,
+            memberEmail: memberDetail.memberEmail,
+            memberAddress: memberDetail.memberAddress,
+            memberEndDate: memberDetail.memberEndDate
+        })
+    }
+
+    // 수정완료 버튼
+    const onClickUpdateHandler = () => {
         
         const formData = new FormData();
-        formData.append("memberCode", form.memberCode);
-        formData.append("deptCode", form.deptCode);
-        formData.append("jobCode", form.jobCode);
+        formData.append("memberCode", memberDetail.memberCode);
+        formData.append("memberName", memberDetail.memberName);
+        formData.append("memberBirth", memberDetail.memberBirth);
+        formData.append("memberExtension", memberDetail.memberExtension);
+        formData.append("memberStartDate", memberDetail.memberStartDate);
+
+        formData.append("deptCode", memberDetail.deptCode);
+        formData.append("jobCode", memberDetail.jobCode);
         formData.append("memberPwd", form.memberPwd);
-        formData.append("memberName", form.memberName);
-        formData.append("memberBirth", form.memberBirth);
         formData.append("memberPhone", form.memberPhone);
         formData.append("memberEmail", form.memberEmail);
         formData.append("memberAddress", form.memberAddress);
-        formData.append("memberExtension", form.memberExtension);
-        formData.append("memberStartDate", form.memberStartDate);
-        formData.append("memberEndDate", form.memberEndDate);
-        
+        if(form.memberEndDate !== null){
+
+            formData.append("memberEndDate", form.memberEndDate);
+        }
+    
         dispatch(callGetMemberUpdateAPI({
             form: formData
         }));
+        // 경로
+        navigate("/admin/member", {replace: true});
+        window.location.reload();
+    }
 
-        navigate('/admin/member', {replace: true});
+    // 삭제 버튼
+    
+    const onClickDeleteHandler = (memberCode) => {
+        // if (window.confirm('정말로 삭제하시겠습니까?')) {
+        //     try {
+        //       await dispatch(callDeleteMemberAPI({ memberCode }));
+        //       navigate("/admin/member", {replace: true});
+        //     } catch (error) {
+        //       console.error(error);
+        //     }
+        //   }
+        dispatch(callDeleteMemberAPI({
+            memberCode: memberCode
+        }));
+        
+        // 경로
+        // navigate("/admin/member", {replace: true});
     }
 
     return(
@@ -89,7 +121,8 @@ function AdminDetailMember(){
                                     type="text"
                                     name="memberCode"
                                     onChange={ onChangeHandler }
-                                    value={ memberDetail.memberCode || ''}
+                                    readOnly={ true }
+                                    value={ memberDetail.memberCode || '' }
                                 />
                             </td>
                         </tr>
@@ -101,6 +134,7 @@ function AdminDetailMember(){
                                     type="text"
                                     name="deptCode"
                                     onChange={ onChangeHandler }
+                                    readOnly={ true }
                                     value={ memberDetail.deptCode || ''}
                                 />
                             </td>
@@ -113,7 +147,8 @@ function AdminDetailMember(){
                                     type="text"
                                     name="jobCode"
                                     onChange={ onChangeHandler }
-                                    value={memberDetail.jobCode || ''}
+                                    readOnly={ true }
+                                    value={ memberDetail.jobCode || ''}
                                 />
                             </td>
                         </tr>
@@ -125,6 +160,8 @@ function AdminDetailMember(){
                                     type="password"
                                     name="memberPwd"
                                     onChange={ onChangeHandler }
+                                    style={ modifyMode ? {backgroundColor: 'gray'} : null}
+                                    value= { (!modifyMode ? memberDetail.memberPwd : form.memberPwd) || '' }
                                 />
                             </td>
                         </tr>
@@ -136,7 +173,8 @@ function AdminDetailMember(){
                                     type="text"
                                     name="memberName"
                                     onChange={ onChangeHandler }
-                                    value={memberDetail.memberName || ''}
+                                    readOnly={ true }
+                                    value={ memberDetail.memberName || ''}
                                 />
                             </td>
                         </tr>
@@ -148,6 +186,7 @@ function AdminDetailMember(){
                                     type="date"
                                     name="memberBirth"
                                     onChange={ onChangeHandler }
+                                    readOnly={ true }
                                     value={moment(memberDetail.memberBirth).format("YYYY-MM-DD") || ''}
                                 />
                             </td>
@@ -160,7 +199,8 @@ function AdminDetailMember(){
                                     type="text"
                                     name="memberPhone"
                                     onChange={ onChangeHandler }
-                                    value={memberDetail.memberPhone || ''}
+                                    style={ modifyMode ? {backgroundColor: 'gray'} : null}
+                                    value={ (!modifyMode ? memberDetail.memberPhone : form.memberPhone) || ''}
                                 />
                             </td>
                         </tr>
@@ -172,7 +212,8 @@ function AdminDetailMember(){
                                     type="text"
                                     name="memberEmail"
                                     onChange={ onChangeHandler }
-                                    value={memberDetail.memberEmail || ''}
+                                    style={ modifyMode ? {backgroundColor: 'gray'} : null}
+                                    value={ (!modifyMode ? memberDetail.memberEmail : form.memberEmail) || ''}
                                 />
                             </td>
                         </tr>
@@ -184,7 +225,8 @@ function AdminDetailMember(){
                                     type="text"
                                     name="memberAddress"
                                     onChange={ onChangeHandler }
-                                    value={memberDetail.memberAddress || ''}
+                                    style={ modifyMode ? {backgroundColor: 'gray'} : null}
+                                    value={ (!modifyMode ? memberDetail.memberAddress : form.memberAddress) || ''}
                                 />
                             </td>
                         </tr>
@@ -196,6 +238,7 @@ function AdminDetailMember(){
                                     type="text"
                                     name="memberExtension"
                                     onChange={ onChangeHandler }
+                                    readOnly={ true }
                                     value={memberDetail.memberExtension || ''}
                                 />
                             </td>
@@ -208,6 +251,7 @@ function AdminDetailMember(){
                                     type="date"
                                     name="memberStartDate"
                                     onChange={ onChangeHandler }
+                                    readOnly={ true }
                                     value={moment(memberDetail.memberStartDate).format("YYYY-MM-DD") || ''}
                                 />
                             </td>
@@ -220,6 +264,8 @@ function AdminDetailMember(){
                                     type="date"
                                     name="memberEndDate"
                                     onChange={ onChangeHandler }
+                                    style={ modifyMode ? {backgroundColor: 'gray'} : null}
+                                    value={ (!modifyMode ? memberDetail.memberEndDate : form.memberEndDate) || ''}
                                 />
                             </td>
                         </tr>
@@ -234,16 +280,24 @@ function AdminDetailMember(){
                     >
                         돌아가기
                     </button>
-                    
+                    {!modifyMode &&
+                        <button       
+                            className={ AdminDetailMemberCSS.saveBtn }
+                            onClick = { onClickEditModeHandler }          
+                        >
+                            수정모드
+                        </button>
+                    }
+                    {modifyMode &&
                     <button       
-                        className={ AdminDetailMemberCSS.saveBtn }
-                        onClick = { onClickEditHandler }          
+                        onClick={ onClickUpdateHandler }             
                     >
-                        수정하기
+                        수정 저장하기
                     </button>
+                    }
                     <button       
                         className={ AdminDetailMemberCSS.deleteBtn }
-                        // onClick = { onClickDeleteHandler }          
+                        onClick = { onClickDeleteHandler }          
                     >
                         삭제하기
                     </button>
