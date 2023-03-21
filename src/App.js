@@ -33,7 +33,7 @@ function App() {
             {/* 공지사항 */}
             <Route path="/notice" element={ <Notice /> }/>
             <Route path="/notice/write" element={ <NoticeWrite /> } /> 
-            <Route path="/notice/detail" element={ <NoticeDetail /> } /> 
+            <Route path="/notice/detail/:noticeNo" element={ <NoticeDetail /> } /> 
             
             {/* 게시판 */}
             <Route path="/board" element={ <Board /> }/>

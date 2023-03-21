@@ -1,44 +1,25 @@
 import NoticeWriteCSS from "./NoticeWrite.module.css";
 import { useNavigate } from 'react-router-dom';
-import React,{ useState } from "react";
-import { useDispatch } from "react-redux";
+import React,{ useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { dataSave } from "../../modules/NoticeModule";
 
-
+import { callNoticeInsertAPI } from "../../apis/NoticeAPICalls"; 
 
 function NoticeWrite() {
 
-    const [noticeTitle, setNoticeTitle] = useState('');
-    const [noticeContent, setNoticeContent] = useState('');
+
     const dispatch =useDispatch();
-
-
     const navigate = useNavigate();
-
-    const onSave = () => {
-        const _inputData = {
-            noticeTitle: noticeTitle,
-            noticeContent: noticeContent
-        }
-
-        dispatch(dataSave(_inputData))
-
-        setNoticeTitle('')
-        setNoticeContent('')
-
-
-    }
+    
+    const [form, setForm] = useState({
+        // noticeNo: '',
+        noticeTitle: '',
+        noticeContent: '',
+        // noticeDate: ''
+    });
 
     
-
-    // const [file, setFile] = useState(null);
-
-    const [form, setForm] = useState({});
-
-    // const changeFileHandler = (e) => {
-    //     setFile(e.target.files[0]);
-    // }
-
     const onChangeHandler = (e) => {
         setForm({
             ...form,
@@ -46,6 +27,12 @@ function NoticeWrite() {
         });
     };
 
+    const onClickInsertHandler = () => {
+        dispatch(callNoticeInsertAPI({
+            form: form
+        }))
+    }
+        // navigate("/notice", { replace: true})
     return(
         <form>
         {/* <form action="" method="post"> */}
@@ -61,6 +48,7 @@ function NoticeWrite() {
                                     placeholder="제목을 작성해주세요."
                                     type="text"
                                     onChange={ onChangeHandler }
+
                                 />
                             </td>
                         </tr>
@@ -98,7 +86,7 @@ function NoticeWrite() {
                         
                         <button       
                             className={ NoticeWriteCSS.saveBtn }
-                            type="submit"       
+                            onClick = {onClickInsertHandler}     
                         >
                             저장하기
                         </button>

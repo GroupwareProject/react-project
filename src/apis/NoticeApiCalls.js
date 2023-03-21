@@ -95,10 +95,10 @@ export const callNoticeDeleteAPI = ({noticeNo}) => {
     };
 }
 
-export const callNoticeDetailAPI = ({form}) => {
+export const callNoticeDetailAPI = ({noticeNo}) => {
     console.log('[NoticeAPICalls] callNoticeDetailAPI Call');
 
-    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/notice/detail`;
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/notice/detail/${noticeNo}`;
 
     return async (dispatch, getState) => {
 
@@ -108,7 +108,7 @@ export const callNoticeDetailAPI = ({form}) => {
                 "Accept": "*/*",
                 "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
             },
-            body: form
+            noticeNo: noticeNo
         })
         .then(response => response.json());
 
