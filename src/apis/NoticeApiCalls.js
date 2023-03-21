@@ -1,4 +1,4 @@
-import { GET_NOTICE, POST_NOTICE, PUT_NOTICE, DELETE_NOTICE } from '../modules/NoticeModule';
+import { GET_NOTICE, POST_NOTICE, PATCH_NOTICE, DELETE_NOTICE } from '../modules/NoticeModule';
 
 export const callNoticeListAPI = () => {
 
@@ -57,7 +57,7 @@ export const callNoticeListAPI = () => {
         return async (dispatch, getState) => {
     
             const result = await fetch(requestURL, {
-                method: "PUT",
+                method: "PATCH",
                 headers: {
                     "Accept": "*/*",
                     "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
@@ -68,7 +68,7 @@ export const callNoticeListAPI = () => {
     
             console.log('[ProduceAPICalls] callProductUpdateAPI RESULT : ', result);
     
-            dispatch({ type: PUT_NOTICE,  payload: result });
+            dispatch({ type: PATCH_NOTICE,  payload: result });
             
         };    
 }
@@ -94,6 +94,31 @@ export const callNoticeDeleteAPI = ({noticeNo}) => {
         } 
     };
 }
+
+export const callNoticeDetailAPI = ({form}) => {
+    console.log('[NoticeAPICalls] callNoticeDetailAPI Call');
+
+    const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/notice/detail`;
+
+    return async (dispatch, getState) => {
+
+        const result = await fetch(requestURL, {
+            method: "GET",
+            headers: {
+                "Accept": "*/*",
+                "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
+            },
+            body: form
+        })
+        .then(response => response.json());
+
+        console.log('[ProduceAPICalls] callProductDetailAPI RESULT : ', result);
+
+        dispatch({ type: GET_NOTICE,  payload: result });
+        
+    };    
+}
+
     
     
 
