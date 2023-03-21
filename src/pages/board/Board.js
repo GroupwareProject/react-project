@@ -1,19 +1,32 @@
 import { useNavigate } from "react-router-dom";
 import BoardCSS from "./Board.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+
+import{ callBoardListAPI } from "../../apis/BoardAPICalls"
 
 function Board() {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const boardList = useSelector(state => state.boardReducer);
 
-    // 공지사항 글쓰기 버튼
+    // 게시판 글쓰기 버튼
     const onClickWriteHandler = () => {
        navigate("/board/write");
     }
 
     // 회원 정보 클릭 시, 수정페이지로 이동
-    // const onClickTableTr = (boardNo) => {
-    //     navigate(`/board/detail/${boardNo}`, { replace: false });
-    // }
+    const onClickTableTr = (boardNo) => {
+        navigate(`/board/detail/${boardNo}`, { replace: false });
+    }
+
+    useEffect(
+        () => {
+            dispatch(callBoardListAPI());          
+        }
+        ,[]
+    );
 
     return(
         <>
@@ -40,18 +53,25 @@ function Board() {
                         </tr>
                     </thead> 
                     <tbody>
-                        {/* { Array.isArray(boardList) && boardList.map(
-                            (boardList) => (
+                        { Array.isArray(boardList) && boardList.map(
+                            (board) => (
                                 <tr
-                                    key={ boardList.boardNo }
-                                    onClick={ () => onClickTableTr(boardList.boardNo) }
+                                    key={ board.boardNo }
+                                    onClick={ () => onClickTableTr(board.boardNo) }
                                 >
-                                    <td>{boardList.boardNo}</td>
-                                    <td>{boardList.boardTitle}</td>
-                                    <td>{boardList.boardDate}</td>
-                                    <td>{boardList.boardViews}</td>
+                                    <td>{board.boardNo}</td>
+                                    <td>{board.boardTitle}</td>
+                                    <td>{board.boardDate}</td>
+                                    <td>{board.boardViews}</td>
                                 </tr>)
-                        )} */}
+                        )}
+
+                                {/* <tr>
+                                    <td>1</td>
+                                    <td>제목제목제목</td>
+                                    <td>2023-02-20</td>
+                                    <td>10</td>
+                                </tr> */}
                     </tbody>            
                 </table>  
             </div>
