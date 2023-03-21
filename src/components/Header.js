@@ -22,7 +22,7 @@ function Header(){
         window.localStorage.removeItem('accessToken');  
         dispatch(callLogoutAPI());
         
-        alert('로그아웃이 되어 메인화면으로 이동합니다.');
+        alert('로그아웃이 되어 로그인 화면으로 이동합니다.');
         navigate("/", { replace: true })
         window.location.reload();
     }
@@ -31,18 +31,18 @@ function Header(){
 
         return (
             <div>
-                <Link to="/login">로그인</Link>
+                <Link to="/">로그인</Link>
             </div>
         );
     }
 
-    function AfterLogin() {
+    function AfterLogin(memberDetail) {
 
         return (            
             <div>
                 {/* {memberName}님 */}
                 {/* {memberDetail.memberName}님 */}
-                <FcBusinessman />  | <button className={ HeaderCSS.HeaderBtn } onClick={ onClickLogoutHandler }>로그아웃</button>
+                <FcBusinessman /> { memberDetail.memberName }님 | <button className={ HeaderCSS.HeaderBtn } onClick={ onClickLogoutHandler }>로그아웃</button>
             </div>
         );
     }
