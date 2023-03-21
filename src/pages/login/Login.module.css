@@ -1,4 +1,8 @@
 .backgroundDiv{
+    background-color: rgba(228, 231, 235, 0.4);
+}
+
+.loginTableDiv{
     height: 100vh;
     display: flex;
     flex-direction: column; /*수평 정렬*/
@@ -7,6 +11,7 @@
     margin: 0;
     padding: 0;
 }
+
 .logindiv {
     position: relative;
     margin: 50px auto;
@@ -17,7 +22,8 @@
     align-items: center;
     justify-content: center;
     padding: var(--padding);
-    background-color: #c4dfff;
+    /* background-color: #c4dfff; */
+    background-color: white;
     border-radius: 7px;
 }
 
@@ -26,8 +32,10 @@
 }
 
 .logindiv button {
-    background-color: white;
+    background-color: rgb(94, 57, 227);
+    color: white;
     border-radius: 4px;
+    width: 150px;
 }
 
 /* .logindiv { 

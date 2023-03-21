@@ -23,8 +23,15 @@ function Login(){
         
         if(loginMember.status === 200){
             console.log("[Login] Login SUCCESS {}", loginMember);
+<<<<<<< HEAD
             // navigate("/", { replace: true });
             
+=======
+            navigate("/main", { replace: true });
+        } else {
+            // window.console.log("비밀번호가 틀렸습니다.")
+            navigate("/", { replace: true });
+>>>>>>> 1b86b494d2f7ec7f4f48f3b76d1522234fc477de
         }
 
     //     // /* 회원 가입 후 로그인 페이지로 안내 되었을 때 */
@@ -49,15 +56,17 @@ function Login(){
         });
     };
     
+    // 로그인 완료
     const handleOnClick = () => {
         dispatch(callLoginAPI({
             form: form
         }));
         alert('로그인이 완료되었습니다.');
         navigate("/main", { replace: true });
-        // window.location.reload();
+        window.location.reload();
     }
 
+    // 엔터로 로그인
     const handleOnKeyPress = e => {
         if(e.key === 'Enter'){
             handleOnClick();
@@ -66,29 +75,32 @@ function Login(){
 
     return(
         <div className={ LoginCSS.backgroundDiv }>
-            <div className={ LoginCSS.logindiv }>
-                <h1>로그인</h1>
-                <input
-                    type="text"
-                    name="memberCode"
-                    placeholder="사번 입력"
-                    autoComplete="off"
-                    onChange={ onChangeHandler }
-                    autoFocus="autofocus"
-                />
-                <input
-                    type="password"
-                    name="memberPwd"
-                    placeholder="비밀번호 입력"
-                    autoComplete="off"
-                    onChange={ onChangeHandler }
-                    onKeyPress={ handleOnKeyPress }
-                />
-                <button
-                    onClick={ handleOnClick }
-                >
-                    로그인
-                </button>
+            <div className={ LoginCSS.loginTableDiv }>
+                <div className={ LoginCSS.logindiv }>
+                    <h2>groupware</h2>
+                    {/* <h3 style={{fontSize: "15px"}}>로그인</h3> */}
+                    <input
+                        type="text"
+                        name="memberCode"
+                        placeholder="사번 입력"
+                        autoComplete="off"
+                        onChange={ onChangeHandler }
+                        autoFocus="autofocus"
+                    />
+                    <input
+                        type="password"
+                        name="memberPwd"
+                        placeholder="비밀번호 입력"
+                        autoComplete="off"
+                        onChange={ onChangeHandler }
+                        onKeyPress={ handleOnKeyPress }
+                    />
+                    <button
+                        onClick={ handleOnClick }
+                    >
+                        로그인
+                    </button>
+                </div>
             </div>
         </div>
     );
