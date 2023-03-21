@@ -11,6 +11,8 @@ function Board() {
     const dispatch = useDispatch();
     const boardList = useSelector(state => state.boardReducer);
 
+    console.log('boardList', boardList);
+
     // 게시판 글쓰기 버튼
     const onClickWriteHandler = () => {
        navigate("/board/write");

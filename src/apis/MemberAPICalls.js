@@ -85,14 +85,14 @@ export const callDeleteMemberAPI = (memberCode) => {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "*/*",
-                "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
+                // "Authorization": "Bearer " + window.localStorage.getItem("accessToken") 
             },
         })
         .then(response => response.json());
 
         console.log('[MemberAPICalls] callDeleteMemberAPI RESULT : ', result);
 
-        dispatch({ type: DELETE_MEMBER,  payload: result });
+        dispatch({ type: DELETE_MEMBER,  payload: result.data });
         
     };
 }

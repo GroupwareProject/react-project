@@ -14,13 +14,13 @@ const initialState = {
 /* 액션 */
 export const GET_NOTICE       = 'notice/GET_NOTICE';
 export const POST_NOTICE      = 'notice/POST_NOTICE';
-export const PATCH_NOTICE       = 'notice/PATCH_NOTICE';
+export const PUT_NOTICE       = 'notice/PUT_NOTICE';
 export const DELETE_NOTICE    = 'notice/DELETE_NOTICE';
 
 const actions = createActions({
     [GET_NOTICE]: () => {},
     [POST_NOTICE]: () => {},
-    [PATCH_NOTICE]: () => {},
+    [PUT_NOTICE]: () => {},
     [DELETE_NOTICE]: () => {},
 });
 
@@ -35,7 +35,7 @@ const noticeReducer = handleActions(
 
             return payload;
         },
-        [PATCH_NOTICE]: (state, {payload}) => {
+        [PUT_NOTICE]: (state, {payload}) => {
 
             return payload;
         },

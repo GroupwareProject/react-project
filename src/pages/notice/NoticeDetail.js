@@ -2,7 +2,7 @@ import NoticeDetailCSS from "./NoticeDetail.module.css";
 import { useNavigate, useParams } from 'react-router-dom';
 import React,{ useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callNoticeDetailAPI } from "../../apis/NoticeAPICalls";
+// import { callNoticeDetailAPI } from "../../apis/NoticeAPICalls";
 
 function NoticeDetail() {
 
@@ -16,13 +16,13 @@ function NoticeDetail() {
 
     // console.log('noticeNo', params.noticeNo);
 
-    useEffect(
-        () => {
-            dispatch(callNoticeDetailAPI({
-                noticeNo: params.noticeNo
-            }));
-        }
-        , [] );
+    // useEffect(
+    //     () => {
+    //         dispatch(callNoticeDetailAPI({
+    //             noticeNo: params.noticeNo
+    //         }));
+    //     }
+    //     , [] );
 
     // const changeFileHandler = (e) => {
     //     setFile(e.target.files[0]);

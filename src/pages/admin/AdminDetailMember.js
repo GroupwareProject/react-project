@@ -89,20 +89,18 @@ function AdminDetailMember(){
     // 삭제 버튼
     
     const onClickDeleteHandler = (memberCode) => {
-        // if (window.confirm('정말로 삭제하시겠습니까?')) {
-        //     try {
-        //       await dispatch(callDeleteMemberAPI({ memberCode }));
-        //       navigate("/admin/member", {replace: true});
-        //     } catch (error) {
-        //       console.error(error);
-        //     }
-        //   }
-        dispatch(callDeleteMemberAPI({
-            memberCode: memberCode
-        }));
+        console.log(`memberCode========================` + memberCode);
+
+        if (window.confirm('삭제 하시겠습니까?')) {
+            dispatch(callDeleteMemberAPI({
+                memberCode
+            }));
+        }
         
+        // alert('회원 삭제를 완료하였습니다.');
         // 경로
         // navigate("/admin/member", {replace: true});
+        // window.location.reload();
     }
 
     return(
