@@ -23,15 +23,11 @@ function Login(){
         
         if(loginMember.status === 200){
             console.log("[Login] Login SUCCESS {}", loginMember);
-<<<<<<< HEAD
-            // navigate("/", { replace: true });
             
-=======
             navigate("/main", { replace: true });
         } else {
             // window.console.log("비밀번호가 틀렸습니다.")
             navigate("/", { replace: true });
->>>>>>> 1b86b494d2f7ec7f4f48f3b76d1522234fc477de
         }
 
     //     // /* 회원 가입 후 로그인 페이지로 안내 되었을 때 */
