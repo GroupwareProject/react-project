@@ -1,12 +1,21 @@
 import BoardWriteCSS from "./BoardWrite.module.css";
 import { useNavigate } from 'react-router-dom';
-import React,{ useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { 
+    callBoardInsertAPI 
+} from "../../apis/BoardAPICalls";
 
 function BoardWrite() {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const [form, setForm] = useState({});
+    const [form, setForm] = useState({
+        boardTitle: '',
+        boardContent: ''
+    });
 
     const onChangeHandler = (e) => {
         setForm({
@@ -14,6 +23,16 @@ function BoardWrite() {
             [e.target.name]: e.target.value
         });
     };
+
+    const onClickRegisterHandler = () => {
+        dispatch(callBoardInsertAPI({
+            form: form
+        }));
+        
+        alert('게시글 등록을 완료하였습니다.');
+        // navigate("/board", { replace: true })
+    }
+
 
     return(
         <form>
@@ -26,7 +45,7 @@ function BoardWrite() {
                             <td>
                                 <input 
                                     className={ BoardWriteCSS.boardWriteInput }
-                                    name="noticeTitle"
+                                    name="boardTitle"
                                     placeholder="제목을 작성해주세요."
                                     type="text"
                                     onChange={ onChangeHandler }
@@ -37,7 +56,7 @@ function BoardWrite() {
                             <td>
                                 <textarea
                                     className={ BoardWriteCSS.contentTextArea }
-                                    name="noticeContent"
+                                    name="boardContent"
                                     placeholder="내용을 작성해주세요."
                                     onChange={ onChangeHandler }
                                 >                                    
@@ -50,14 +69,14 @@ function BoardWrite() {
                 <div className={ BoardWriteCSS.buttonDiv }>
                         <button
                             className={ BoardWriteCSS.backBtn }
-                            onClick={ () => navigate("/notice") }
+                            onClick={ () => navigate("/board") }
                         >
                             돌아가기
                         </button>
                         
                         <button       
                             className={ BoardWriteCSS.saveBtn }
-                            type="submit"       
+                            onClick = { onClickRegisterHandler }       
                         >
                             저장하기
                         </button>

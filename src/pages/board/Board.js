@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import BoardCSS from "./Board.module.css";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 
@@ -63,7 +64,7 @@ function Board() {
                                 >
                                     <td>{board.boardNo}</td>
                                     <td>{board.boardTitle}</td>
-                                    <td>{board.boardDate}</td>
+                                    <td>{moment(board.boardDate).format("YYYY-MM-DD") || ''}</td>
                                     <td>{board.boardViews}</td>
                                 </tr>)
                         )}

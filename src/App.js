@@ -38,7 +38,7 @@ function App() {
             {/* 게시판 */}
             <Route path="/board" element={ <Board /> }/>
             <Route path="/board/write" element={ <BoardWrite /> } /> 
-            <Route path="/board/detail" element={ <BoardDetail /> } /> 
+            <Route path="/board/detail/:boardNo" element={ <BoardDetail /> } /> 
             
             {/* 캘린더 */}
             <Route path="/calendar" element={ <Calendar /> }/>

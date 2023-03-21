@@ -8,9 +8,9 @@ function Sidebar() {
         <div className={ SidebarCSS.SidebarDiv }>
             <ul className={ SidebarCSS.SidebarUl }>
                 <li><Link to="/notice"><FcFilledFilter /> 공지사항</Link></li>
-                <li><Link to="/notice/detail"> [확인용]공지사항 수정</Link></li>
+                {/* <li><Link to="/notice/detail"> [확인용]공지사항 수정</Link></li> */}
                 <li><Link to="/board"><FcFilledFilter /> 게시판</Link></li>
-                <li><Link to="/board/detail"> [확인용]게시판 수정</Link></li>
+                {/* <li><Link to="/board/detail"> [확인용]게시판 수정</Link></li> */}
                 <li><Link to="/calendar"><FcPlanner /> 캘린더</Link></li>
                 <li><Link to="/address"><FcTwoSmartphones /> 주소록</Link></li>
                 <li><Link to="/mypage/member"><FcPortraitMode /> 마이페이지</Link></li>

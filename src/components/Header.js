@@ -42,7 +42,7 @@ function Header(){
             <div>
                 {/* {memberName}님 */}
                 {/* {memberDetail.memberName}님 */}
-                <FcBusinessman /> { memberDetail.memberName }님 | <button className={ HeaderCSS.HeaderBtn } onClick={ onClickLogoutHandler }>로그아웃</button>
+                <FcBusinessman /> { memberDetail.memberName } | <button className={ HeaderCSS.HeaderBtn } onClick={ onClickLogoutHandler }>로그아웃</button>
             </div>
         );
     }
