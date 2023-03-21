@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // import { POST_REGISTER } from '../../modules/MemberModule';
 
 import { callLoginAPI } from '../../apis/MemberAPICalls';
+import { decodeJwt } from '../../utils/tokenUtils';
 
 function Login(){
 
@@ -23,6 +24,7 @@ function Login(){
         if(loginMember.status === 200){
             console.log("[Login] Login SUCCESS {}", loginMember);
             // navigate("/", { replace: true });
+            
         }
 
     //     // /* 회원 가입 후 로그인 페이지로 안내 되었을 때 */
