@@ -19,7 +19,7 @@ function Board() {
        navigate("/board/write");
     }
 
-    // 회원 정보 클릭 시, 수정페이지로 이동
+    // 게시판 클릭 시, 수정페이지로 이동
     const onClickTableTr = (boardNo) => {
         navigate(`/board/detail/${boardNo}`, { replace: false });
     }

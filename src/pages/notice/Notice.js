@@ -1,10 +1,10 @@
-
+import NoticeCSS from "./Notice.module.css";
 import moment from "moment";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { callNoticeListAPI } from "../../apis/NoticeAPICalls";
-import NoticeCSS from "./Notice.module.css";
 // import { decodeJwt } from "../../utils/tokenUtils";
 
 function Notice() {
@@ -30,7 +30,7 @@ function Notice() {
        navigate("/notice/write");
     }
 
-    // 회원 정보 클릭 시, 수정페이지로 이동
+    // 공지사항 클릭 시, 수정페이지로 이동
     const onClickTableTr = (noticeNo) => {
         navigate(`/notice/detail/${noticeNo}`, { replace: false });
     }

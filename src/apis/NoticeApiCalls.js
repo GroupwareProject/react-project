@@ -35,10 +35,15 @@ export const callNoticeListAPI = () => {
             const result = await fetch(requestURL, {
                 method: "POST",
                 headers: {
+                    "Content-type":"application/json",
                     "Accept": "*/*",
                     "Authorization": "Bearer " + window.localStorage.getItem("accessToken")
                 },
-                body: form
+                body: JSON.stringify({
+                    'memberCode:': form.get('memberCode'),
+                    'noticeTitle': form.get('noticeTitle'),
+                    'noticeContent': form.get('noticeContent')
+                })
             })
             .then(response => response.json());
     
@@ -49,10 +54,10 @@ export const callNoticeListAPI = () => {
         };    
     }    
 
-    export const callNoticeUpdateAPI = ({form}) => {
+    export const callNoticeUpdateAPI = ({form, noticeNo}) => {
         console.log('[NoticeAPICalls] callNoticeUpdateAPI Call');
     
-        const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/notice/detail`;
+        const requestURL = `http://${process.env.REACT_APP_RESTAPI_IP}:8282/api/v1/notice/detail/${noticeNo}`;
     
         return async (dispatch, getState) => {
     

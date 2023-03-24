@@ -11,7 +11,7 @@ function AdminMember(){
     const dispatch = useDispatch();
     const AdminMember = useSelector(state => state.memberReducer);  
 
-    console.log('AdminMember', AdminMember); // 값이 안나옴
+    console.log('AdminMember', AdminMember);
 
     // 회원 등록 버튼 
     const onClickAddHandler = () => {

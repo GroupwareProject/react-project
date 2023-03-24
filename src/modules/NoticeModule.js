@@ -1,4 +1,3 @@
-import { ex } from '@fullcalendar/core/internal-common';
 import {createActions, handleActions} from 'redux-actions';
 
 

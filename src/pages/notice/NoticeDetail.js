@@ -2,8 +2,15 @@ import NoticeDetailCSS from "./NoticeDetail.module.css";
 import { useNavigate, useParams } from 'react-router-dom';
 import React,{ useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callNoticeDetailAPI, callNoticeUpdateAPI, callNoticeDeleteAPI, callNoticeListAPI } from "../../apis/NoticeAPICalls";
 import { decodeJwt } from '../../utils/tokenUtils';
+
+
+import { 
+    callNoticeDetailAPI, 
+    callNoticeUpdateAPI, 
+    callNoticeDeleteAPI, 
+    callNoticeListAPI 
+} from "../../apis/NoticeAPICalls";
 
 function NoticeDetail() {
 
@@ -12,7 +19,6 @@ function NoticeDetail() {
     const params = useParams();
     const notice = useSelector(state => state.noticeReducer);
     const noticeDetail = notice.data;
-
     const token = decodeJwt(window.localStorage.getItem("accessToken"));
 
 
@@ -131,20 +137,19 @@ function NoticeDetail() {
                             수정모드
                         </button>
                         }
-
-                    {modifyMode &&
-                    <button       
-                        onClick={ onClickUpdateHandler }             
-                    >
-                        수정 저장하기
-                    </button>
-                    }
-                        {/* <button       
+                        {modifyMode &&
+                        <button       
+                            onClick={ onClickUpdateHandler }             
+                        >
+                            수정 저장하기
+                        </button>
+                        }
+                        <button       
                             className={ NoticeDetailCSS.deleteBtn }
-                            onClick={ onClickDeleteHandler }       
+                            // onClick={ onClickDeleteHandler }       
                         >
                             삭제하기
-                        </button> */}
+                        </button>
                 </div>
             </div>
             }
