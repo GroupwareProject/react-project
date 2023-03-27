@@ -63,11 +63,11 @@ function Login(){
     }
 
     // 엔터로 로그인
-    const handleOnKeyPress = e => {
-        if(e.key === 'Enter'){
-            handleOnClick();
-        }
-    };
+    // const handleOnKeyPress = e => {
+    //     if(e.key === 'Enter'){
+    //         handleOnClick();
+    //     }
+    // };
 
     return(
         <div className={ LoginCSS.backgroundDiv }>
@@ -89,7 +89,7 @@ function Login(){
                         placeholder="비밀번호 입력"
                         autoComplete="off"
                         onChange={ onChangeHandler }
-                        onKeyPress={ handleOnKeyPress }
+                        // onKeyPress={ handleOnKeyPress }
                     />
                     <button
                         onClick={ handleOnClick }
